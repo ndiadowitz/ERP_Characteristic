@@ -1,0 +1,1027 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="urn:sap-com:document:sap:soap:functions:mc-style" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:n1="urn:sap-com:document:sap:rfc:functions" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" targetNamespace="urn:sap-com:document:sap:soap:functions:mc-style" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation>
+    <sidl:sidl xmlns:sidl="http://www.sap.com/2007/03/sidl" />
+  </wsdl:documentation>
+  <wsp:UsingPolicy wsdl:required="true" />
+  <wsp:Policy wsu:Id="BN_BN_Z_HH_MT_CHARACTERISTIC">
+    <saptrnbnd:OptimizedXMLTransfer uri="http://xml.sap.com/2006/11/esi/esp/binxml" xmlns:saptrnbnd="http://www.sap.com/webas/710/soap/features/transportbinding/" wsp:Optional="true" />
+    <saptrnbnd:OptimizedXMLTransfer uri="http://www.w3.org/2004/08/soap/features/http-optimization" xmlns:saptrnbnd="http://www.sap.com/webas/710/soap/features/transportbinding/" wsp:Optional="true" />
+    <sapsession:Session xmlns:sapsession="http://www.sap.com/webas/630/soap/features/session/">
+      <sapsession:SessionMethod>httpCookies</sapsession:SessionMethod>
+    </sapsession:Session>
+    <sapattahnd:Enabled xmlns:sapattahnd="http://www.sap.com/710/features/attachment/">false</sapattahnd:Enabled>
+    <wsp:ExactlyOne xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="IF_IF_Z_HH_MT_Characteristic">
+    <sapsession:Session xmlns:sapsession="http://www.sap.com/webas/630/soap/features/session/">
+      <sapsession:enableSession>true</sapsession:enableSession>
+    </sapsession:Session>
+    <sapcentraladmin:CentralAdministration xmlns:sapcentraladmin="http://www.sap.com/webas/700/soap/features/CentralAdministration/" wsp:Optional="true" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="OP_IF_OP_CharacteristicAddLongText">
+    <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">false</sapcomhnd:enableCommit>
+    <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+    <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+    <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="OP_IF_OP_CharacteristicChange">
+    <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">false</sapcomhnd:enableCommit>
+    <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+    <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+    <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="OP_IF_OP_CharacteristicCreate">
+    <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">false</sapcomhnd:enableCommit>
+    <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+    <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+    <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="OP_IF_OP_CharacteristicDelete">
+    <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">false</sapcomhnd:enableCommit>
+    <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+    <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+    <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="OP_IF_OP_CharacteristicExistenceCheck">
+    <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">false</sapcomhnd:enableCommit>
+    <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+    <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+    <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="OP_IF_OP_CharacteristicGetDetail">
+    <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">false</sapcomhnd:enableCommit>
+    <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+    <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+    <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="OP_IF_OP_CharacteristicGetList">
+    <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">false</sapcomhnd:enableCommit>
+    <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+    <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+    <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="OP_IF_OP_CharacteristicGetLongText">
+    <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">false</sapcomhnd:enableCommit>
+    <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+    <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+    <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="OP_IF_OP_CharacteristicGetWhereUsedList">
+    <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">false</sapcomhnd:enableCommit>
+    <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+    <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+    <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="OP_IF_OP_CharacteristicRemoveLongText">
+    <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">false</sapcomhnd:enableCommit>
+    <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+    <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+    <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="OP_IF_OP_BapiServiceTransactionRollback">
+    <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">DoRollback</sapcomhnd:enableCommit>
+    <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+    <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+    <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="OP_IF_OP_CharacteristicRename">
+    <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">false</sapcomhnd:enableCommit>
+    <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+    <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+    <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="OP_IF_OP_BapiServiceTransactionCommit">
+    <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">DoCommit</sapcomhnd:enableCommit>
+    <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+    <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+    <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema attributeFormDefault="qualified" targetNamespace="urn:sap-com:document:sap:rfc:functions">
+      <xsd:simpleType name="char1">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="1" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char10">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="10" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char12">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="12" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char132">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="132" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char18">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="18" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char2">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char20">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="20" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char220">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="220" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char25">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="25" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char3">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="3" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char30">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="30" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char32">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="32" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char4">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="4" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char40">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char50">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="50" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char8">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="8" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="cuky5">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="5" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="date10">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="10" />
+          <xsd:pattern value="\d\d\d\d-\d\d-\d\d" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="lang">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="1" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="numeric1">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="1" />
+          <xsd:pattern value="\d*" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="numeric2">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="2" />
+          <xsd:pattern value="\d*" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="numeric3">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="3" />
+          <xsd:pattern value="\d*" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="numeric6">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="6" />
+          <xsd:pattern value="\d*" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="unit3">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="3" />
+        </xsd:restriction>
+      </xsd:simpleType>
+    </xsd:schema>
+    <xsd:schema xmlns:n0="urn:sap-com:document:sap:rfc:functions" attributeFormDefault="qualified" targetNamespace="urn:sap-com:document:sap:soap:functions:mc-style">
+      <xsd:import namespace="urn:sap-com:document:sap:rfc:functions" />
+      <xsd:complexType name="Bapitline">
+        <xsd:sequence>
+          <xsd:element name="Tdformat" type="n0:char2" />
+          <xsd:element name="Tdline" type="n0:char132" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Bapiret2">
+        <xsd:sequence>
+          <xsd:element name="Type" type="n0:char1" />
+          <xsd:element name="Id" type="n0:char20" />
+          <xsd:element name="Number" type="n0:numeric3" />
+          <xsd:element name="Message" type="n0:char220" />
+          <xsd:element name="LogNo" type="n0:char20" />
+          <xsd:element name="LogMsgNo" type="n0:numeric6" />
+          <xsd:element name="MessageV1" type="n0:char50" />
+          <xsd:element name="MessageV2" type="n0:char50" />
+          <xsd:element name="MessageV3" type="n0:char50" />
+          <xsd:element name="MessageV4" type="n0:char50" />
+          <xsd:element name="Parameter" type="n0:char32" />
+          <xsd:element name="Row" type="xsd:int" />
+          <xsd:element name="Field" type="n0:char30" />
+          <xsd:element name="System" type="n0:char10" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Bapicharactdescr">
+        <xsd:sequence>
+          <xsd:element name="LanguageInt" type="n0:lang" />
+          <xsd:element name="LanguageIso" type="n0:char2" />
+          <xsd:element name="Description" type="n0:char30" />
+          <xsd:element name="Header1" type="n0:char30" />
+          <xsd:element name="Header2" type="n0:char30" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Bapicharactdetail">
+        <xsd:sequence>
+          <xsd:element name="CharactName" type="n0:char30" />
+          <xsd:element name="DataType" type="n0:char18" />
+          <xsd:element name="Length" type="n0:numeric2" />
+          <xsd:element name="Decimals" type="n0:numeric2" />
+          <xsd:element name="CaseSensitiv" type="n0:char1" />
+          <xsd:element name="ExponentType" type="n0:numeric1" />
+          <xsd:element name="Exponent" type="xsd:short" />
+          <xsd:element name="Template" type="n0:char30" />
+          <xsd:element name="WithSign" type="n0:char1" />
+          <xsd:element name="UnitOfMeasurement" type="n0:unit3" />
+          <xsd:element name="UnitOfMeasurementIso" type="n0:char3" />
+          <xsd:element name="Currency" type="n0:cuky5" />
+          <xsd:element name="CurrencyIso" type="n0:char3" />
+          <xsd:element name="Status" type="n0:char1" />
+          <xsd:element name="CharactGroup" type="n0:char10" />
+          <xsd:element name="ValueAssignment" type="n0:char1" />
+          <xsd:element name="NoEntry" type="n0:char1" />
+          <xsd:element name="NoDisplay" type="n0:char1" />
+          <xsd:element name="EntryRequired" type="n0:char1" />
+          <xsd:element name="IntervalAllowed" type="n0:char1" />
+          <xsd:element name="ShowTemplate" type="n0:char1" />
+          <xsd:element name="DisplayValues" type="n0:char1" />
+          <xsd:element name="AdditionalValues" type="n0:char1" />
+          <xsd:element name="DocumentNo" type="n0:char25" />
+          <xsd:element name="DocumentType" type="n0:char3" />
+          <xsd:element name="DocumentPart" type="n0:char3" />
+          <xsd:element name="DocumentVersion" type="n0:char2" />
+          <xsd:element name="CheckTable" type="n0:char30" />
+          <xsd:element name="CheckFunction" type="n0:char30" />
+          <xsd:element name="Plant" type="n0:char4" />
+          <xsd:element name="SelectedSet" type="n0:char8" />
+          <xsd:element name="AdtClass" type="n0:char18" />
+          <xsd:element name="AdtClassType" type="n0:char3" />
+          <xsd:element name="Aggregating" type="n0:char1" />
+          <xsd:element name="Balancing" type="n0:char1" />
+          <xsd:element name="InputRequestedConf" type="n0:char1" />
+          <xsd:element name="AuthorityGroup" type="n0:char3" />
+          <xsd:element name="Unformated" type="n0:char1" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Bapicharactreferences">
+        <xsd:sequence>
+          <xsd:element name="ReferenceTable" type="n0:char30" />
+          <xsd:element name="ReferenceField" type="n0:char30" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Bapicharactrestrictions">
+        <xsd:sequence>
+          <xsd:element name="ClassType" type="n0:char3" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Bapicharactvalueschar">
+        <xsd:sequence>
+          <xsd:element name="ValueChar" type="n0:char30" />
+          <xsd:element name="ValueCharHigh" type="n0:char30" />
+          <xsd:element name="DefaultValue" type="n0:char1" />
+          <xsd:element name="DocumentNo" type="n0:char25" />
+          <xsd:element name="DocumentType" type="n0:char3" />
+          <xsd:element name="DocumentPart" type="n0:char3" />
+          <xsd:element name="DocumentVersion" type="n0:char2" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Bapicharactvaluescurr">
+        <xsd:sequence>
+          <xsd:element name="ValueFrom" type="xsd:float" />
+          <xsd:element name="ValueTo" type="xsd:float" />
+          <xsd:element name="ValueRelation" type="n0:char1" />
+          <xsd:element name="CurrencyFrom" type="n0:cuky5" />
+          <xsd:element name="CurrencyTo" type="n0:cuky5" />
+          <xsd:element name="CurrencyFromIso" type="n0:char3" />
+          <xsd:element name="CurrencyToIso" type="n0:char3" />
+          <xsd:element name="DefaultValue" type="n0:char1" />
+          <xsd:element name="DocumentNo" type="n0:char25" />
+          <xsd:element name="DocumentType" type="n0:char3" />
+          <xsd:element name="DocumentPart" type="n0:char3" />
+          <xsd:element name="DocumentVersion" type="n0:char2" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Bapicharactvaluesdescr">
+        <xsd:sequence>
+          <xsd:element name="LanguageInt" type="n0:lang" />
+          <xsd:element name="LanguageIso" type="n0:char2" />
+          <xsd:element name="ValueChar" type="n0:char30" />
+          <xsd:element name="Description" type="n0:char30" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Bapicharactvaluesnum">
+        <xsd:sequence>
+          <xsd:element name="ValueFrom" type="xsd:float" />
+          <xsd:element name="ValueTo" type="xsd:float" />
+          <xsd:element name="ValueRelation" type="n0:char1" />
+          <xsd:element name="UnitFrom" type="n0:unit3" />
+          <xsd:element name="UnitTo" type="n0:unit3" />
+          <xsd:element name="UnitFromIso" type="n0:char3" />
+          <xsd:element name="UnitToIso" type="n0:char3" />
+          <xsd:element name="DefaultValue" type="n0:char1" />
+          <xsd:element name="DocumentNo" type="n0:char25" />
+          <xsd:element name="DocumentType" type="n0:char3" />
+          <xsd:element name="DocumentPart" type="n0:char3" />
+          <xsd:element name="DocumentVersion" type="n0:char2" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Bapicharactrangegroup">
+        <xsd:sequence>
+          <xsd:element name="Sign" type="n0:char1" />
+          <xsd:element name="Option" type="n0:char2" />
+          <xsd:element name="Low" type="n0:char10" />
+          <xsd:element name="Rhigh" type="n0:char10" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Bapicharactrangetable">
+        <xsd:sequence>
+          <xsd:element name="Sign" type="n0:char1" />
+          <xsd:element name="Option" type="n0:char2" />
+          <xsd:element name="Low" type="n0:char30" />
+          <xsd:element name="High" type="n0:char30" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Bapicharactlist">
+        <xsd:sequence>
+          <xsd:element name="Charactname" type="n0:char30" />
+          <xsd:element name="Charactgroup" type="n0:char10" />
+          <xsd:element name="Datatype" type="n0:char18" />
+          <xsd:element name="Charactlength" type="n0:numeric2" />
+          <xsd:element name="Charactdecimals" type="n0:numeric2" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Bapiclasslist">
+        <xsd:sequence>
+          <xsd:element name="Classname" type="n0:char18" />
+          <xsd:element name="Classtype" type="n0:char3" />
+          <xsd:element name="Description" type="n0:char40" />
+          <xsd:element name="Status" type="n0:char1" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Bapiflag">
+        <xsd:sequence>
+          <xsd:element name="Bapiflag" type="n0:char1" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TableOfBapitline">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:Bapitline" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TableOfBapiret2">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:Bapiret2" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TableOfBapicharactdescr">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:Bapicharactdescr" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TableOfBapicharactdetail">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:Bapicharactdetail" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TableOfBapicharactreferences">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:Bapicharactreferences" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TableOfBapicharactrestrictions">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:Bapicharactrestrictions" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TableOfBapicharactvalueschar">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:Bapicharactvalueschar" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TableOfBapicharactvaluescurr">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:Bapicharactvaluescurr" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TableOfBapicharactvaluesdescr">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:Bapicharactvaluesdescr" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TableOfBapicharactvaluesnum">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:Bapicharactvaluesnum" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TableOfBapicharactrangegroup">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:Bapicharactrangegroup" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TableOfBapicharactrangetable">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:Bapicharactrangetable" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TableOfBapicharactlist">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:Bapicharactlist" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TableOfBapiclasslist">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:Bapiclasslist" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="CharacteristicAddLongText">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="ChangeNumber" type="n0:char12" />
+            <xsd:element name="CharactName" type="n0:char30" />
+            <xsd:element minOccurs="0" name="KeyDate" type="n0:date10" />
+            <xsd:element minOccurs="0" name="LanguageISO" type="n0:char2" />
+            <xsd:element minOccurs="0" name="LanguageInt" type="n0:lang" />
+            <xsd:element name="LongText" type="tns:TableOfBapitline" />
+            <xsd:element minOccurs="0" name="ValueChar" type="n0:char30" />
+            <xsd:element minOccurs="0" name="ValueFrom" type="xsd:float" />
+            <xsd:element minOccurs="0" name="ValueRelation" type="n0:char1" />
+            <xsd:element minOccurs="0" name="ValueTo" type="xsd:float" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CharacteristicAddLongTextResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Return" type="tns:TableOfBapiret2" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CharacteristicChange">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="ChangeNumber" type="n0:char12" />
+            <xsd:element minOccurs="0" name="CharactDescrNew" type="tns:TableOfBapicharactdescr" />
+            <xsd:element name="CharactDetailNew" type="tns:TableOfBapicharactdetail" />
+            <xsd:element name="CharactName" type="n0:char30" />
+            <xsd:element minOccurs="0" name="CharactReferencesNew" type="tns:TableOfBapicharactreferences" />
+            <xsd:element minOccurs="0" name="CharactRestrictionsNew" type="tns:TableOfBapicharactrestrictions" />
+            <xsd:element minOccurs="0" name="CharactValuesCharNew" type="tns:TableOfBapicharactvalueschar" />
+            <xsd:element minOccurs="0" name="CharactValuesCurrNew" type="tns:TableOfBapicharactvaluescurr" />
+            <xsd:element minOccurs="0" name="CharactValuesDescrNew" type="tns:TableOfBapicharactvaluesdescr" />
+            <xsd:element minOccurs="0" name="CharactValuesNumNew" type="tns:TableOfBapicharactvaluesnum" />
+            <xsd:element minOccurs="0" name="KeyDate" type="n0:date10" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CharacteristicChangeResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Return" type="tns:TableOfBapiret2" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CharacteristicCreate">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="ChangeNumber" type="n0:char12" />
+            <xsd:element name="CharactDescr" type="tns:TableOfBapicharactdescr" />
+            <xsd:element name="CharactDetail" type="tns:Bapicharactdetail" />
+            <xsd:element minOccurs="0" name="CharactReferences" type="tns:TableOfBapicharactreferences" />
+            <xsd:element minOccurs="0" name="CharactRestrictions" type="tns:TableOfBapicharactrestrictions" />
+            <xsd:element minOccurs="0" name="CharactValuesChar" type="tns:TableOfBapicharactvalueschar" />
+            <xsd:element minOccurs="0" name="CharactValuesCurr" type="tns:TableOfBapicharactvaluescurr" />
+            <xsd:element minOccurs="0" name="CharactValuesDescr" type="tns:TableOfBapicharactvaluesdescr" />
+            <xsd:element minOccurs="0" name="CharactValuesNum" type="tns:TableOfBapicharactvaluesnum" />
+            <xsd:element minOccurs="0" name="Keydate" type="n0:date10" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CharacteristicCreateResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Return" type="tns:TableOfBapiret2" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CharacteristicDelete">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="ChangeNumber" type="n0:char12" />
+            <xsd:element name="CharactName" type="n0:char30" />
+            <xsd:element minOccurs="0" name="KeyDate" type="n0:date10" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CharacteristicDeleteResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Return" type="tns:TableOfBapiret2" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CharacteristicExistenceCheck">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="CharactName" type="n0:char30" />
+            <xsd:element minOccurs="0" name="Keydate" type="n0:date10" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CharacteristicExistenceCheckResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Return" type="tns:TableOfBapiret2" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CharacteristicGetDetail">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="CharactName" type="n0:char30" />
+            <xsd:element minOccurs="0" name="Keydate" type="n0:date10" />
+            <xsd:element minOccurs="0" name="Language" type="n0:lang" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CharacteristicGetDetailResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="CharactDescr" type="tns:TableOfBapicharactdescr" />
+            <xsd:element name="CharactDetail" type="tns:Bapicharactdetail" />
+            <xsd:element minOccurs="0" name="CharactReferences" type="tns:TableOfBapicharactreferences" />
+            <xsd:element minOccurs="0" name="CharactRestrictions" type="tns:TableOfBapicharactrestrictions" />
+            <xsd:element minOccurs="0" name="CharactValuesChar" type="tns:TableOfBapicharactvalueschar" />
+            <xsd:element minOccurs="0" name="CharactValuesCurr" type="tns:TableOfBapicharactvaluescurr" />
+            <xsd:element minOccurs="0" name="CharactValuesDescr" type="tns:TableOfBapicharactvaluesdescr" />
+            <xsd:element minOccurs="0" name="CharactValuesNum" type="tns:TableOfBapicharactvaluesnum" />
+            <xsd:element name="Return" type="tns:TableOfBapiret2" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CharacteristicGetList">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="CharactGroupRange" type="tns:TableOfBapicharactrangegroup" />
+            <xsd:element name="CharactRange" type="tns:TableOfBapicharactrangetable" />
+            <xsd:element minOccurs="0" name="DataType" type="n0:char18" />
+            <xsd:element minOccurs="0" name="KeyDate" type="n0:date10" />
+            <xsd:element minOccurs="0" name="ReferenceTable" type="n0:char30" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CharacteristicGetListResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="CharactList" type="tns:TableOfBapicharactlist" />
+            <xsd:element name="Return" type="tns:TableOfBapiret2" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CharacteristicGetLongText">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="ChangeNumber" type="n0:char12" />
+            <xsd:element name="CharactName" type="n0:char30" />
+            <xsd:element minOccurs="0" name="KeyDate" type="n0:date10" />
+            <xsd:element minOccurs="0" name="LanguageISO" type="n0:char2" />
+            <xsd:element minOccurs="0" name="LanguageInt" type="n0:lang" />
+            <xsd:element minOccurs="0" name="ValueChar" type="n0:char30" />
+            <xsd:element minOccurs="0" name="ValueFrom" type="xsd:float" />
+            <xsd:element minOccurs="0" name="ValueRelation" type="n0:char1" />
+            <xsd:element minOccurs="0" name="ValueTo" type="xsd:float" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CharacteristicGetLongTextResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="LongText" type="tns:TableOfBapitline" />
+            <xsd:element name="Return" type="tns:TableOfBapiret2" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CharacteristicGetWhereUsedList">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="CharactName" type="n0:char30" />
+            <xsd:element minOccurs="0" name="KeyDate" type="n0:date10" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CharacteristicGetWhereUsedListResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ClassList" type="tns:TableOfBapiclasslist" />
+            <xsd:element name="IsValuated" type="tns:Bapiflag" />
+            <xsd:element name="Return" type="tns:TableOfBapiret2" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CharacteristicRemoveLongText">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="ChangeNumber" type="n0:char12" />
+            <xsd:element name="CharactName" type="n0:char30" />
+            <xsd:element minOccurs="0" name="KeyDate" type="n0:date10" />
+            <xsd:element minOccurs="0" name="LanguageISO" type="n0:char2" />
+            <xsd:element minOccurs="0" name="LanguageInt" type="n0:lang" />
+            <xsd:element minOccurs="0" name="ValueChar" type="n0:char30" />
+            <xsd:element minOccurs="0" name="ValueFrom" type="xsd:float" />
+            <xsd:element minOccurs="0" name="ValueRelation" type="n0:char1" />
+            <xsd:element minOccurs="0" name="ValueTo" type="xsd:float" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CharacteristicRemoveLongTextResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Return" type="tns:TableOfBapiret2" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CharacteristicRename">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="ChangeNumber" type="n0:char12" />
+            <xsd:element name="CharactName" type="n0:char30" />
+            <xsd:element name="CharactNameNew" type="n0:char30" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CharacteristicRenameResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="Return" type="tns:TableOfBapiret2" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="BapiServiceTransactionCommit">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="WAIT" type="n0:char1" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="BapiServiceTransactionCommitResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Return" type="tns:Bapiret2" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="BapiServiceTransactionRollback">
+        <xsd:complexType>
+          <xsd:sequence />
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="BapiServiceTransactionRollbackResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Return" type="tns:Bapiret2" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="CharacteristicAddLongText">
+    <wsdl:part name="parameters" element="tns:CharacteristicAddLongText" />
+  </wsdl:message>
+  <wsdl:message name="CharacteristicAddLongTextResponse">
+    <wsdl:part name="parameter" element="tns:CharacteristicAddLongTextResponse" />
+  </wsdl:message>
+  <wsdl:message name="CharacteristicChange">
+    <wsdl:part name="parameters" element="tns:CharacteristicChange" />
+  </wsdl:message>
+  <wsdl:message name="CharacteristicChangeResponse">
+    <wsdl:part name="parameter" element="tns:CharacteristicChangeResponse" />
+  </wsdl:message>
+  <wsdl:message name="CharacteristicCreate">
+    <wsdl:part name="parameters" element="tns:CharacteristicCreate" />
+  </wsdl:message>
+  <wsdl:message name="CharacteristicCreateResponse">
+    <wsdl:part name="parameter" element="tns:CharacteristicCreateResponse" />
+  </wsdl:message>
+  <wsdl:message name="CharacteristicDelete">
+    <wsdl:part name="parameters" element="tns:CharacteristicDelete" />
+  </wsdl:message>
+  <wsdl:message name="CharacteristicDeleteResponse">
+    <wsdl:part name="parameter" element="tns:CharacteristicDeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="CharacteristicExistenceCheck">
+    <wsdl:part name="parameters" element="tns:CharacteristicExistenceCheck" />
+  </wsdl:message>
+  <wsdl:message name="CharacteristicExistenceCheckResponse">
+    <wsdl:part name="parameter" element="tns:CharacteristicExistenceCheckResponse" />
+  </wsdl:message>
+  <wsdl:message name="CharacteristicGetDetail">
+    <wsdl:part name="parameters" element="tns:CharacteristicGetDetail" />
+  </wsdl:message>
+  <wsdl:message name="CharacteristicGetDetailResponse">
+    <wsdl:part name="parameter" element="tns:CharacteristicGetDetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="CharacteristicGetList">
+    <wsdl:part name="parameters" element="tns:CharacteristicGetList" />
+  </wsdl:message>
+  <wsdl:message name="CharacteristicGetListResponse">
+    <wsdl:part name="parameter" element="tns:CharacteristicGetListResponse" />
+  </wsdl:message>
+  <wsdl:message name="CharacteristicGetLongText">
+    <wsdl:part name="parameters" element="tns:CharacteristicGetLongText" />
+  </wsdl:message>
+  <wsdl:message name="CharacteristicGetLongTextResponse">
+    <wsdl:part name="parameter" element="tns:CharacteristicGetLongTextResponse" />
+  </wsdl:message>
+  <wsdl:message name="CharacteristicGetWhereUsedList">
+    <wsdl:part name="parameters" element="tns:CharacteristicGetWhereUsedList" />
+  </wsdl:message>
+  <wsdl:message name="CharacteristicGetWhereUsedListResponse">
+    <wsdl:part name="parameter" element="tns:CharacteristicGetWhereUsedListResponse" />
+  </wsdl:message>
+  <wsdl:message name="CharacteristicRemoveLongText">
+    <wsdl:part name="parameters" element="tns:CharacteristicRemoveLongText" />
+  </wsdl:message>
+  <wsdl:message name="CharacteristicRemoveLongTextResponse">
+    <wsdl:part name="parameter" element="tns:CharacteristicRemoveLongTextResponse" />
+  </wsdl:message>
+  <wsdl:message name="CharacteristicRename">
+    <wsdl:part name="parameters" element="tns:CharacteristicRename" />
+  </wsdl:message>
+  <wsdl:message name="CharacteristicRenameResponse">
+    <wsdl:part name="parameter" element="tns:CharacteristicRenameResponse" />
+  </wsdl:message>
+  <wsdl:message name="BapiServiceTransactionCommit">
+    <wsdl:part name="parameters" element="tns:BapiServiceTransactionCommit" />
+  </wsdl:message>
+  <wsdl:message name="BapiServiceTransactionCommitResponse">
+    <wsdl:part name="parameter" element="tns:BapiServiceTransactionCommitResponse" />
+  </wsdl:message>
+  <wsdl:message name="BapiServiceTransactionRollback">
+    <wsdl:part name="parameters" element="tns:BapiServiceTransactionRollback" />
+  </wsdl:message>
+  <wsdl:message name="BapiServiceTransactionRollbackResponse">
+    <wsdl:part name="parameter" element="tns:BapiServiceTransactionRollbackResponse" />
+  </wsdl:message>
+  <wsdl:portType name="Z_HH_MT_Characteristic">
+    <wsp:Policy>
+      <wsp:PolicyReference URI="#IF_IF_Z_HH_MT_Characteristic" />
+    </wsp:Policy>
+    <wsdl:operation name="CharacteristicAddLongText">
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_IF_OP_CharacteristicAddLongText" />
+      </wsp:Policy>
+      <wsdl:input message="tns:CharacteristicAddLongText" />
+      <wsdl:output message="tns:CharacteristicAddLongTextResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="CharacteristicChange">
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_IF_OP_CharacteristicChange" />
+      </wsp:Policy>
+      <wsdl:input message="tns:CharacteristicChange" />
+      <wsdl:output message="tns:CharacteristicChangeResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="CharacteristicCreate">
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_IF_OP_CharacteristicCreate" />
+      </wsp:Policy>
+      <wsdl:input message="tns:CharacteristicCreate" />
+      <wsdl:output message="tns:CharacteristicCreateResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="CharacteristicDelete">
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_IF_OP_CharacteristicDelete" />
+      </wsp:Policy>
+      <wsdl:input message="tns:CharacteristicDelete" />
+      <wsdl:output message="tns:CharacteristicDeleteResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="CharacteristicExistenceCheck">
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_IF_OP_CharacteristicExistenceCheck" />
+      </wsp:Policy>
+      <wsdl:input message="tns:CharacteristicExistenceCheck" />
+      <wsdl:output message="tns:CharacteristicExistenceCheckResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="CharacteristicGetDetail">
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_IF_OP_CharacteristicGetDetail" />
+      </wsp:Policy>
+      <wsdl:input message="tns:CharacteristicGetDetail" />
+      <wsdl:output message="tns:CharacteristicGetDetailResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="CharacteristicGetList">
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_IF_OP_CharacteristicGetList" />
+      </wsp:Policy>
+      <wsdl:input message="tns:CharacteristicGetList" />
+      <wsdl:output message="tns:CharacteristicGetListResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="CharacteristicGetLongText">
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_IF_OP_CharacteristicGetLongText" />
+      </wsp:Policy>
+      <wsdl:input message="tns:CharacteristicGetLongText" />
+      <wsdl:output message="tns:CharacteristicGetLongTextResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="CharacteristicGetWhereUsedList">
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_IF_OP_CharacteristicGetWhereUsedList" />
+      </wsp:Policy>
+      <wsdl:input message="tns:CharacteristicGetWhereUsedList" />
+      <wsdl:output message="tns:CharacteristicGetWhereUsedListResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="CharacteristicRemoveLongText">
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_IF_OP_CharacteristicRemoveLongText" />
+      </wsp:Policy>
+      <wsdl:input message="tns:CharacteristicRemoveLongText" />
+      <wsdl:output message="tns:CharacteristicRemoveLongTextResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="CharacteristicRename">
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_IF_OP_CharacteristicRename" />
+      </wsp:Policy>
+      <wsdl:input message="tns:CharacteristicRename" />
+      <wsdl:output message="tns:CharacteristicRenameResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="BapiServiceTransactionCommit">
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_IF_OP_BapiServiceTransactionCommit" />
+      </wsp:Policy>
+      <wsdl:input message="tns:BapiServiceTransactionCommit" />
+      <wsdl:output message="tns:BapiServiceTransactionCommitResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="BapiServiceTransactionRollback">
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_IF_OP_BapiServiceTransactionRollback" />
+      </wsp:Policy>
+      <wsdl:input message="tns:BapiServiceTransactionRollback" />
+      <wsdl:output message="tns:BapiServiceTransactionRollbackResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Z_HH_MT_CHARACTERISTIC" type="tns:Z_HH_MT_Characteristic">
+    <wsp:Policy>
+      <wsp:PolicyReference URI="#BN_BN_Z_HH_MT_CHARACTERISTIC" />
+    </wsp:Policy>
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CharacteristicAddLongText">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CharacteristicChange">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CharacteristicCreate">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CharacteristicDelete">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CharacteristicExistenceCheck">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CharacteristicGetDetail">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CharacteristicGetList">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CharacteristicGetLongText">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CharacteristicGetWhereUsedList">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CharacteristicRemoveLongText">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CharacteristicRename">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BapiServiceTransactionCommit">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BapiServiceTransactionRollback">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Z_HH_MT_CHARACTERISTIC">
+    <wsdl:port name="Z_HH_MT_CHARACTERISTIC" binding="tns:Z_HH_MT_CHARACTERISTIC">
+      <soap:address location="http://i48lp1.in.tum.de:8048/sap/bc/srt/rfc/sap/z_hh_mt_characteristic/902/z_hh_mt_characteristic/z_hh_mt_characteristic" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
