@@ -32,6 +32,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="sapnco, Version=3.0.0.42, Culture=neutral, PublicKeyToken=50436dca5c7f7d23">
+      <HintPath>..\packages\SAPDotNetConnector3.0.3.0\lib\sapnco.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="sapnco_utils, Version=3.0.0.42, Culture=neutral, PublicKeyToken=50436dca5c7f7d23">
+      <HintPath>..\packages\SAPDotNetConnector3.0.3.0\lib\sapnco_utils.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -45,6 +53,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="erp\Characteristics.cs" />
+    <Compile Include="erp\Erp.cs" />
+    <Compile Include="erp\ErpConnection.cs" />
+    <Compile Include="erp\WasteContainer.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -62,6 +74,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="bin\Debug\libicudecnumber.dll" />
+    <None Include="bin\Release\libicudecnumber.dll" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
