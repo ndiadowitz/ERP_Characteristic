@@ -1,0 +1,1949 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="urn:sap-com:document:sap:soap:functions:mc-style" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:n1="urn:sap-com:document:sap:rfc:functions" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" targetNamespace="urn:sap-com:document:sap:soap:functions:mc-style" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation>
+    <sidl:sidl xmlns:sidl="http://www.sap.com/2007/03/sidl" />
+  </wsdl:documentation>
+  <wsp:UsingPolicy wsdl:required="true" />
+  <wsp:Policy wsu:Id="BN_BN_Z_HH_CLASS">
+    <saptrnbnd:OptimizedXMLTransfer uri="http://xml.sap.com/2006/11/esi/esp/binxml" xmlns:saptrnbnd="http://www.sap.com/webas/710/soap/features/transportbinding/" wsp:Optional="true" />
+    <saptrnbnd:OptimizedXMLTransfer uri="http://www.w3.org/2004/08/soap/features/http-optimization" xmlns:saptrnbnd="http://www.sap.com/webas/710/soap/features/transportbinding/" wsp:Optional="true" />
+    <sapsession:Session xmlns:sapsession="http://www.sap.com/webas/630/soap/features/session/">
+      <sapsession:SessionMethod>httpCookies</sapsession:SessionMethod>
+    </sapsession:Session>
+    <sapattahnd:Enabled xmlns:sapattahnd="http://www.sap.com/710/features/attachment/">false</sapattahnd:Enabled>
+    <wsp:ExactlyOne xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="IF_IF_Z_HH_Class">
+    <sapsession:Session xmlns:sapsession="http://www.sap.com/webas/630/soap/features/session/">
+      <sapsession:enableSession>true</sapsession:enableSession>
+    </sapsession:Session>
+    <sapcentraladmin:CentralAdministration xmlns:sapcentraladmin="http://www.sap.com/webas/700/soap/features/CentralAdministration/" wsp:Optional="true" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="OP_IF_OP_ClassChange">
+    <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">false</sapcomhnd:enableCommit>
+    <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+    <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+    <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="OP_IF_OP_ClassCreate">
+    <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">false</sapcomhnd:enableCommit>
+    <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+    <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+    <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="OP_IF_OP_ClassDelete">
+    <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">false</sapcomhnd:enableCommit>
+    <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+    <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+    <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="OP_IF_OP_ClassExistenceCheck">
+    <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">false</sapcomhnd:enableCommit>
+    <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+    <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+    <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="OP_IF_OP_ClassGetDetail">
+    <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">false</sapcomhnd:enableCommit>
+    <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+    <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+    <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="OP_IF_OP_ClassGetList">
+    <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">false</sapcomhnd:enableCommit>
+    <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+    <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+    <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="OP_IF_OP_ClassGetstatus">
+    <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">false</sapcomhnd:enableCommit>
+    <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+    <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+    <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="OP_IF_OP_ClassGetCharacteristics">
+    <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">false</sapcomhnd:enableCommit>
+    <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+    <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+    <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="OP_IF_OP_ClassGetClassifications">
+    <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">false</sapcomhnd:enableCommit>
+    <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+    <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+    <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="OP_IF_OP_ClassSelectObjects">
+    <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">false</sapcomhnd:enableCommit>
+    <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+    <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+    <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="OP_IF_OP_ClassAddSubclassAllocation">
+    <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">false</sapcomhnd:enableCommit>
+    <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+    <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+    <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="OP_IF_OP_ClassAddSubstructure">
+    <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">false</sapcomhnd:enableCommit>
+    <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+    <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+    <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="OP_IF_OP_ClassChangeSubclassValidation">
+    <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">false</sapcomhnd:enableCommit>
+    <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+    <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+    <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="OP_IF_OP_ClassChangeSubstructure">
+    <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">false</sapcomhnd:enableCommit>
+    <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+    <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+    <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="OP_IF_OP_ClassCheckSubclassAllocation">
+    <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">false</sapcomhnd:enableCommit>
+    <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+    <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+    <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="OP_IF_OP_ClassGetDetailSubclassAllocation">
+    <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">false</sapcomhnd:enableCommit>
+    <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+    <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+    <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="OP_IF_OP_ClassGetSubclassAllocations">
+    <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">false</sapcomhnd:enableCommit>
+    <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+    <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+    <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="OP_IF_OP_ClassGetSubstructure">
+    <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">false</sapcomhnd:enableCommit>
+    <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+    <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+    <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="OP_IF_OP_ClassGetSuperclassAllocations">
+    <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">false</sapcomhnd:enableCommit>
+    <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+    <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+    <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="OP_IF_OP_ClassGetSuperstructure">
+    <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">false</sapcomhnd:enableCommit>
+    <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+    <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+    <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="OP_IF_OP_ClassRemoveSubclass">
+    <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">false</sapcomhnd:enableCommit>
+    <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+    <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+    <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="OP_IF_OP_ClassRemoveSubstructure">
+    <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">false</sapcomhnd:enableCommit>
+    <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+    <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+    <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="OP_IF_OP_BapiServiceTransactionCommit">
+    <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">DoCommit</sapcomhnd:enableCommit>
+    <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+    <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+    <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="OP_IF_OP_BapiServiceTransactionRollback">
+    <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">DoRollback</sapcomhnd:enableCommit>
+    <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+    <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+    <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema attributeFormDefault="qualified" targetNamespace="urn:sap-com:document:sap:rfc:functions">
+      <xsd:simpleType name="char1">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="1" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char10">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="10" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char12">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="12" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char132">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="132" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char15">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="15" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char18">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="18" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char2">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char20">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="20" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char220">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="220" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char25">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="25" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char3">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="3" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char30">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="30" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char32">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="32" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char4">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="4" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char40">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char50">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="50" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char6">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="6" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="cuky5">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="5" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="date10">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="10" />
+          <xsd:pattern value="\d\d\d\d-\d\d-\d\d" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="decimal23.4">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:totalDigits value="23" />
+          <xsd:fractionDigits value="4" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="lang">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="1" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="numeric1">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="1" />
+          <xsd:pattern value="\d*" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="numeric2">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="2" />
+          <xsd:pattern value="\d*" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="numeric3">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="3" />
+          <xsd:pattern value="\d*" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="numeric4">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="4" />
+          <xsd:pattern value="\d*" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="numeric6">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="6" />
+          <xsd:pattern value="\d*" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="unit3">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="3" />
+        </xsd:restriction>
+      </xsd:simpleType>
+    </xsd:schema>
+    <xsd:schema xmlns:n0="urn:sap-com:document:sap:rfc:functions" attributeFormDefault="qualified" targetNamespace="urn:sap-com:document:sap:soap:functions:mc-style">
+      <xsd:import namespace="urn:sap-com:document:sap:rfc:functions" />
+      <xsd:complexType name="Bapi1003CharactOverwr">
+        <xsd:sequence>
+          <xsd:element name="NameChar" type="n0:char30" />
+          <xsd:element name="EntryObligatory" type="n0:char1" />
+          <xsd:element name="IntervalsAllowed" type="n0:char1" />
+          <xsd:element name="Unformated" type="n0:char1" />
+          <xsd:element name="PropTempl" type="n0:char1" />
+          <xsd:element name="DisplVals" type="n0:char1" />
+          <xsd:element name="AdditionalVal" type="n0:char1" />
+          <xsd:element name="DocumentNumber" type="n0:char25" />
+          <xsd:element name="DocumentType" type="n0:char3" />
+          <xsd:element name="DocumentPart" type="n0:char3" />
+          <xsd:element name="DocumentVersion" type="n0:char2" />
+          <xsd:element name="FlresetAl" type="n0:char1" />
+          <xsd:element name="Input" type="n0:char1" />
+          <xsd:element name="NoDisplay" type="n0:char1" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Bapi1003CharactOverwrNew">
+        <xsd:sequence>
+          <xsd:element name="NameChar" type="n0:char30" />
+          <xsd:element name="EntryObligatory" type="n0:char1" />
+          <xsd:element name="IntervalsAllowed" type="n0:char1" />
+          <xsd:element name="Unformated" type="n0:char1" />
+          <xsd:element name="PropTempl" type="n0:char1" />
+          <xsd:element name="DisplVals" type="n0:char1" />
+          <xsd:element name="AdditionalVal" type="n0:char1" />
+          <xsd:element name="DocumentNumber" type="n0:char25" />
+          <xsd:element name="DocumentType" type="n0:char3" />
+          <xsd:element name="DocumentPart" type="n0:char3" />
+          <xsd:element name="DocumentVersion" type="n0:char2" />
+          <xsd:element name="FlresetAl" type="n0:char1" />
+          <xsd:element name="Input" type="n0:char1" />
+          <xsd:element name="NoDisplay" type="n0:char1" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Bapi1003Charvaltext">
+        <xsd:sequence>
+          <xsd:element name="Charact" type="n0:char30" />
+          <xsd:element name="Value" type="n0:char30" />
+          <xsd:element name="Valdescr" type="n0:char30" />
+          <xsd:element name="Langu" type="n0:lang" />
+          <xsd:element name="LanguIso" type="n0:char2" />
+          <xsd:element name="Fldelete" type="n0:char1" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Bapi1003CharvaltextNew">
+        <xsd:sequence>
+          <xsd:element name="Charact" type="n0:char30" />
+          <xsd:element name="Value" type="n0:char30" />
+          <xsd:element name="Valdescr" type="n0:char30" />
+          <xsd:element name="Langu" type="n0:lang" />
+          <xsd:element name="LanguIso" type="n0:char2" />
+          <xsd:element name="Fldelete" type="n0:char1" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Bapi1003CharactValueOvr">
+        <xsd:sequence>
+          <xsd:element name="NameChar" type="n0:char30" />
+          <xsd:element name="ValueBef" type="n0:char30" />
+          <xsd:element name="CharValue" type="n0:char30" />
+          <xsd:element name="DefaultFlag" type="n0:char1" />
+          <xsd:element name="DocumentNumber" type="n0:char25" />
+          <xsd:element name="DocumentType" type="n0:char3" />
+          <xsd:element name="DocumentPart" type="n0:char3" />
+          <xsd:element name="DocumentVersion" type="n0:char2" />
+          <xsd:element name="Fldelete" type="n0:char1" />
+          <xsd:element name="CharValueHigh" type="n0:char30" />
+          <xsd:element name="FlresetAl" type="n0:char1" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Bapi1003CharactValueOvrNew">
+        <xsd:sequence>
+          <xsd:element name="NameChar" type="n0:char30" />
+          <xsd:element name="ValueBef" type="n0:char30" />
+          <xsd:element name="CharValue" type="n0:char30" />
+          <xsd:element name="DefaultFlag" type="n0:char1" />
+          <xsd:element name="DocumentNumber" type="n0:char25" />
+          <xsd:element name="DocumentType" type="n0:char3" />
+          <xsd:element name="DocumentPart" type="n0:char3" />
+          <xsd:element name="DocumentVersion" type="n0:char2" />
+          <xsd:element name="Fldelete" type="n0:char1" />
+          <xsd:element name="CharValueHigh" type="n0:char30" />
+          <xsd:element name="FlresetAl" type="n0:char1" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Bapi1003Add">
+        <xsd:sequence>
+          <xsd:element name="BomUsageOk" type="n0:char1" />
+          <xsd:element name="IsocodeUnit" type="n0:char3" />
+          <xsd:element name="BaseUom" type="n0:unit3" />
+          <xsd:element name="ResPostype" type="n0:char1" />
+          <xsd:element name="DepartmentView" type="n0:char10" />
+          <xsd:element name="ReqComponent" type="n0:char1" />
+          <xsd:element name="MultipleSelect" type="n0:char1" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Bapi1003AddNew">
+        <xsd:sequence>
+          <xsd:element name="BomUsageOk" type="n0:char1" />
+          <xsd:element name="IsocodeUnit" type="n0:char3" />
+          <xsd:element name="BaseUom" type="n0:unit3" />
+          <xsd:element name="ResPostype" type="n0:char1" />
+          <xsd:element name="DepartmentView" type="n0:char10" />
+          <xsd:element name="ReqComponent" type="n0:char1" />
+          <xsd:element name="MultipleSelect" type="n0:char1" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Bapi1003Basic">
+        <xsd:sequence>
+          <xsd:element name="Status" type="n0:char1" />
+          <xsd:element name="Classgroup" type="n0:char10" />
+          <xsd:element name="DepartmentView" type="n0:char10" />
+          <xsd:element name="ValidFrom" type="n0:date10" />
+          <xsd:element name="ValidTo" type="n0:date10" />
+          <xsd:element name="Authmaintain" type="n0:char3" />
+          <xsd:element name="Authclassify" type="n0:char3" />
+          <xsd:element name="Authsearch" type="n0:char3" />
+          <xsd:element name="SameValueNo" type="n0:char1" />
+          <xsd:element name="SameValueW" type="n0:char1" />
+          <xsd:element name="SameValueE" type="n0:char1" />
+          <xsd:element name="LocalClass" type="n0:char1" />
+          <xsd:element name="Katalog" type="n0:char30" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Bapi1003BasicNew">
+        <xsd:sequence>
+          <xsd:element name="Status" type="n0:char1" />
+          <xsd:element name="Classgroup" type="n0:char10" />
+          <xsd:element name="DepartmentView" type="n0:char10" />
+          <xsd:element name="ValidFrom" type="n0:date10" />
+          <xsd:element name="ValidTo" type="n0:date10" />
+          <xsd:element name="Authmaintain" type="n0:char3" />
+          <xsd:element name="Authclassify" type="n0:char3" />
+          <xsd:element name="Authsearch" type="n0:char3" />
+          <xsd:element name="SameValueNo" type="n0:char1" />
+          <xsd:element name="SameValueW" type="n0:char1" />
+          <xsd:element name="SameValueE" type="n0:char1" />
+          <xsd:element name="LocalClass" type="n0:char1" />
+          <xsd:element name="Katalog" type="n0:char30" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Bapi1003Charact">
+        <xsd:sequence>
+          <xsd:element name="NameChar" type="n0:char30" />
+          <xsd:element name="CodeLetter" type="n0:char15" />
+          <xsd:element name="CharactOrigin" type="n0:char10" />
+          <xsd:element name="DepartmentView" type="n0:char10" />
+          <xsd:element name="InsertBefore" type="n0:char30" />
+          <xsd:element name="Deletevalue" type="n0:char1" />
+          <xsd:element name="PrintRelev" type="n0:char1" />
+          <xsd:element name="SelectRelev" type="n0:char1" />
+          <xsd:element name="DisplayRelev" type="n0:char1" />
+          <xsd:element name="IndexRelev" type="n0:char1" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Bapi1003CharactNew">
+        <xsd:sequence>
+          <xsd:element name="NameChar" type="n0:char30" />
+          <xsd:element name="CodeLetter" type="n0:char15" />
+          <xsd:element name="CharactOrigin" type="n0:char10" />
+          <xsd:element name="DepartmentView" type="n0:char10" />
+          <xsd:element name="InsertBefore" type="n0:char30" />
+          <xsd:element name="Deletevalue" type="n0:char1" />
+          <xsd:element name="PrintRelev" type="n0:char1" />
+          <xsd:element name="SelectRelev" type="n0:char1" />
+          <xsd:element name="DisplayRelev" type="n0:char1" />
+          <xsd:element name="IndexRelev" type="n0:char1" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Bapi1003Catch">
+        <xsd:sequence>
+          <xsd:element name="Langu" type="n0:lang" />
+          <xsd:element name="LanguIso" type="n0:char2" />
+          <xsd:element name="Catchword" type="n0:char40" />
+          <xsd:element name="DeleteFlag" type="n0:char1" />
+          <xsd:element name="InsertBefore" type="n0:char40" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Bapi1003CatchNew">
+        <xsd:sequence>
+          <xsd:element name="Langu" type="n0:lang" />
+          <xsd:element name="LanguIso" type="n0:char2" />
+          <xsd:element name="Catchword" type="n0:char40" />
+          <xsd:element name="DeleteFlag" type="n0:char1" />
+          <xsd:element name="InsertBefore" type="n0:char40" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Bapi1003Docu">
+        <xsd:sequence>
+          <xsd:element name="DocumentNumber" type="n0:char25" />
+          <xsd:element name="DocumentType" type="n0:char3" />
+          <xsd:element name="DocumentPart" type="n0:char3" />
+          <xsd:element name="DocumentVersion" type="n0:char2" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Bapi1003DocuNew">
+        <xsd:sequence>
+          <xsd:element name="DocumentNumber" type="n0:char25" />
+          <xsd:element name="DocumentType" type="n0:char3" />
+          <xsd:element name="DocumentPart" type="n0:char3" />
+          <xsd:element name="DocumentVersion" type="n0:char2" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Bapi1003Longtext">
+        <xsd:sequence>
+          <xsd:element name="TextType" type="n0:char2" />
+          <xsd:element name="Langu" type="n0:lang" />
+          <xsd:element name="LanguIso" type="n0:char2" />
+          <xsd:element name="TextDescr" type="n0:char40" />
+          <xsd:element name="TextForm" type="n0:char2" />
+          <xsd:element name="TextLine" type="n0:char132" />
+          <xsd:element name="Fldelete" type="n0:char1" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Bapi1003Stand">
+        <xsd:sequence>
+          <xsd:element name="StandardName" type="n0:char10" />
+          <xsd:element name="StandardNo" type="n0:char20" />
+          <xsd:element name="DateOfIssue" type="n0:date10" />
+          <xsd:element name="DateOfVersion" type="n0:date10" />
+          <xsd:element name="NoOfVersion" type="n0:numeric2" />
+          <xsd:element name="TabularLayout" type="n0:char20" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Bapi1003StandNew">
+        <xsd:sequence>
+          <xsd:element name="StandardName" type="n0:char10" />
+          <xsd:element name="StandardNo" type="n0:char20" />
+          <xsd:element name="DateOfIssue" type="n0:date10" />
+          <xsd:element name="DateOfVersion" type="n0:date10" />
+          <xsd:element name="NoOfVersion" type="n0:numeric2" />
+          <xsd:element name="TabularLayout" type="n0:char20" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Bapiret2">
+        <xsd:sequence>
+          <xsd:element name="Type" type="n0:char1" />
+          <xsd:element name="Id" type="n0:char20" />
+          <xsd:element name="Number" type="n0:numeric3" />
+          <xsd:element name="Message" type="n0:char220" />
+          <xsd:element name="LogNo" type="n0:char20" />
+          <xsd:element name="LogMsgNo" type="n0:numeric6" />
+          <xsd:element name="MessageV1" type="n0:char50" />
+          <xsd:element name="MessageV2" type="n0:char50" />
+          <xsd:element name="MessageV3" type="n0:char50" />
+          <xsd:element name="MessageV4" type="n0:char50" />
+          <xsd:element name="Parameter" type="n0:char32" />
+          <xsd:element name="Row" type="xsd:int" />
+          <xsd:element name="Field" type="n0:char30" />
+          <xsd:element name="System" type="n0:char10" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Bapi1003CharactR">
+        <xsd:sequence>
+          <xsd:element name="NameChar" type="n0:char30" />
+          <xsd:element name="Descr" type="n0:char30" />
+          <xsd:element name="CodeLetter" type="n0:char15" />
+          <xsd:element name="CharactOrigin" type="n0:char10" />
+          <xsd:element name="DepartmentView" type="n0:char10" />
+          <xsd:element name="PrintRelev" type="n0:char1" />
+          <xsd:element name="SelectRelev" type="n0:char1" />
+          <xsd:element name="DisplayRelev" type="n0:char1" />
+          <xsd:element name="EntryObligatory" type="n0:char1" />
+          <xsd:element name="IntervalsAllowed" type="n0:char1" />
+          <xsd:element name="Unformated" type="n0:char1" />
+          <xsd:element name="PropTempl" type="n0:char1" />
+          <xsd:element name="DisplVals" type="n0:char1" />
+          <xsd:element name="AdditionalVal" type="n0:char1" />
+          <xsd:element name="DocumentNumber" type="n0:char25" />
+          <xsd:element name="DocumentType" type="n0:char3" />
+          <xsd:element name="DocumentPart" type="n0:char3" />
+          <xsd:element name="DocumentVersion" type="n0:char2" />
+          <xsd:element name="ClassNum" type="n0:char18" />
+          <xsd:element name="ClassType" type="n0:char3" />
+          <xsd:element name="ChOvrwrt" type="n0:char1" />
+          <xsd:element name="ValOvrwrt" type="n0:char1" />
+          <xsd:element name="NoDisplay" type="n0:char1" />
+          <xsd:element name="CharInherited" type="n0:char1" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Bapi1003CharValR">
+        <xsd:sequence>
+          <xsd:element name="NameChar" type="n0:char30" />
+          <xsd:element name="CharValue" type="n0:char30" />
+          <xsd:element name="DefaultFlag" type="n0:char1" />
+          <xsd:element name="DocumentNumber" type="n0:char25" />
+          <xsd:element name="DocumentType" type="n0:char3" />
+          <xsd:element name="DocumentPart" type="n0:char3" />
+          <xsd:element name="DocumentVersion" type="n0:char2" />
+          <xsd:element name="DescrCval" type="n0:char30" />
+          <xsd:element name="ValSort" type="n0:numeric4" />
+          <xsd:element name="ValhParnt" type="n0:numeric4" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Bapi1003CatchR">
+        <xsd:sequence>
+          <xsd:element name="Langu" type="n0:lang" />
+          <xsd:element name="LanguIso" type="n0:char2" />
+          <xsd:element name="Catchword" type="n0:char40" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Bapi1003LongtextR">
+        <xsd:sequence>
+          <xsd:element name="TextType" type="n0:char2" />
+          <xsd:element name="Langu" type="n0:lang" />
+          <xsd:element name="LanguIso" type="n0:char2" />
+          <xsd:element name="TextDescr" type="n0:char40" />
+          <xsd:element name="TextForm" type="n0:char2" />
+          <xsd:element name="TextLine" type="n0:char132" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Bapiclassrangegroup">
+        <xsd:sequence>
+          <xsd:element name="Sign" type="n0:char1" />
+          <xsd:element name="Option" type="n0:char2" />
+          <xsd:element name="Low" type="n0:char10" />
+          <xsd:element name="High" type="n0:char10" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Bapiclasssel">
+        <xsd:sequence>
+          <xsd:element name="Sign" type="n0:char1" />
+          <xsd:element name="Option" type="n0:char2" />
+          <xsd:element name="ClassLow" type="n0:char18" />
+          <xsd:element name="ClassHigh" type="n0:char18" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Bapiclasslist">
+        <xsd:sequence>
+          <xsd:element name="Classname" type="n0:char18" />
+          <xsd:element name="Classtype" type="n0:char3" />
+          <xsd:element name="Description" type="n0:char40" />
+          <xsd:element name="Status" type="n0:char1" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Bapi1003Statusinfo">
+        <xsd:sequence>
+          <xsd:element name="Status" type="n0:char1" />
+          <xsd:element name="ClassMaintain" type="n0:char1" />
+          <xsd:element name="Classify" type="n0:char1" />
+          <xsd:element name="Search" type="n0:char1" />
+          <xsd:element name="DefaultStatus" type="n0:char1" />
+          <xsd:element name="LockDistribute" type="n0:char1" />
+          <xsd:element name="ProfileAleChng" type="n0:char10" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Char">
+        <xsd:sequence>
+          <xsd:element name="NameChar" type="n0:char30" />
+          <xsd:element name="DescrChar" type="n0:char30" />
+          <xsd:element name="EntryObligatory" type="n0:char1" />
+          <xsd:element name="AdditionalVal" type="n0:char1" />
+          <xsd:element name="Unit" type="n0:unit3" />
+          <xsd:element name="UnitTExt" type="n0:char6" />
+          <xsd:element name="BaseUomIso" type="n0:char3" />
+          <xsd:element name="Currency" type="n0:cuky5" />
+          <xsd:element name="CurrencyIso" type="n0:char3" />
+          <xsd:element name="DataType" type="n0:char4" />
+          <xsd:element name="NumberDigits" type="xsd:short" />
+          <xsd:element name="NumberDecimals" type="xsd:short" />
+          <xsd:element name="Template" type="n0:char30" />
+          <xsd:element name="DinKey" type="n0:char3" />
+          <xsd:element name="DepartmentView" type="n0:char10" />
+          <xsd:element name="Sign" type="n0:char1" />
+          <xsd:element name="SingleValue" type="n0:char1" />
+          <xsd:element name="IntervalsAllowed" type="n0:char1" />
+          <xsd:element name="CaseSensitive" type="n0:char1" />
+          <xsd:element name="ObjectTable" type="n0:char30" />
+          <xsd:element name="TableField" type="n0:char30" />
+          <xsd:element name="CharInherited" type="n0:char1" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="CharValues">
+        <xsd:sequence>
+          <xsd:element name="NameChar" type="n0:char30" />
+          <xsd:element name="CharValue" type="n0:char30" />
+          <xsd:element name="DescrCval" type="n0:char30" />
+          <xsd:element name="NumValFm" type="xsd:float" />
+          <xsd:element name="NumValTo" type="xsd:float" />
+          <xsd:element name="CurrValFm" type="n0:decimal23.4" />
+          <xsd:element name="CurrValTo" type="n0:decimal23.4" />
+          <xsd:element name="ValRelatn" type="n0:char1" />
+          <xsd:element name="CharValueHigh" type="n0:char30" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Bapireturn1">
+        <xsd:sequence>
+          <xsd:element name="Type" type="n0:char1" />
+          <xsd:element name="Id" type="n0:char20" />
+          <xsd:element name="Number" type="n0:numeric3" />
+          <xsd:element name="Message" type="n0:char220" />
+          <xsd:element name="LogNo" type="n0:char20" />
+          <xsd:element name="LogMsgNo" type="n0:numeric6" />
+          <xsd:element name="MessageV1" type="n0:char50" />
+          <xsd:element name="MessageV2" type="n0:char50" />
+          <xsd:element name="MessageV3" type="n0:char50" />
+          <xsd:element name="MessageV4" type="n0:char50" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Bapiflag">
+        <xsd:sequence>
+          <xsd:element name="Bapiflag" type="n0:char1" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ClassObjects">
+        <xsd:sequence>
+          <xsd:element name="ObjectKey" type="n0:char50" />
+          <xsd:element name="ObjectType" type="n0:char30" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ObjectValues">
+        <xsd:sequence>
+          <xsd:element name="ObjectKey" type="n0:char50" />
+          <xsd:element name="NameChar" type="n0:char30" />
+          <xsd:element name="CharValue" type="n0:char30" />
+          <xsd:element name="DescrCval" type="n0:char30" />
+          <xsd:element name="NumValFm" type="xsd:float" />
+          <xsd:element name="NumValTo" type="xsd:float" />
+          <xsd:element name="CurrValFm" type="n0:decimal23.4" />
+          <xsd:element name="CurrValTo" type="n0:decimal23.4" />
+          <xsd:element name="ValRelatn" type="n0:numeric1" />
+          <xsd:element name="Unit" type="n0:unit3" />
+          <xsd:element name="BaseUomIso" type="n0:char3" />
+          <xsd:element name="UnitTExt" type="n0:char6" />
+          <xsd:element name="Currency" type="n0:cuky5" />
+          <xsd:element name="CurrencyIso" type="n0:char3" />
+          <xsd:element name="ObjectType" type="n0:char30" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SelectionCriterions">
+        <xsd:sequence>
+          <xsd:element name="NameChar" type="n0:char30" />
+          <xsd:element name="CharValue" type="n0:char30" />
+          <xsd:element name="NumValFm" type="xsd:float" />
+          <xsd:element name="NumValTo" type="xsd:float" />
+          <xsd:element name="CurrValFm" type="n0:decimal23.4" />
+          <xsd:element name="CurrValTo" type="n0:decimal23.4" />
+          <xsd:element name="ValRelatn" type="n0:numeric1" />
+          <xsd:element name="Unit" type="n0:unit3" />
+          <xsd:element name="BaseUomIso" type="n0:char3" />
+          <xsd:element name="UnitTExt" type="n0:char6" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SelectedObjects">
+        <xsd:sequence>
+          <xsd:element name="Object" type="n0:char50" />
+          <xsd:element name="Objecttext" type="n0:char40" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Bapi1003AllocValues">
+        <xsd:sequence>
+          <xsd:element name="Charact" type="n0:char30" />
+          <xsd:element name="ValueChar" type="n0:char30" />
+          <xsd:element name="ValueFrom" type="xsd:float" />
+          <xsd:element name="ValueTo" type="xsd:float" />
+          <xsd:element name="UnitFrom" type="n0:unit3" />
+          <xsd:element name="UnitTo" type="n0:unit3" />
+          <xsd:element name="UnitFromIso" type="n0:char3" />
+          <xsd:element name="UnitToIso" type="n0:char3" />
+          <xsd:element name="CurrencyFrom" type="n0:cuky5" />
+          <xsd:element name="CurrencyTo" type="n0:cuky5" />
+          <xsd:element name="CurrencyFromIso" type="n0:char3" />
+          <xsd:element name="CurrencyToIso" type="n0:char3" />
+          <xsd:element name="ValueRelation" type="n0:char1" />
+          <xsd:element name="Inherited" type="n0:char1" />
+          <xsd:element name="Instance" type="n0:numeric3" />
+          <xsd:element name="ValueNeutral" type="n0:char30" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Bapi1003Tree">
+        <xsd:sequence>
+          <xsd:element name="Classname" type="n0:char18" />
+          <xsd:element name="Description" type="n0:char40" />
+          <xsd:element name="Childname" type="n0:char18" />
+          <xsd:element name="Level" type="n0:numeric2" />
+          <xsd:element name="Link" type="n0:char1" />
+          <xsd:element name="Status" type="n0:char1" />
+          <xsd:element name="Leftname" type="n0:char18" />
+          <xsd:element name="Rightname" type="n0:char18" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TableOfBapi1003CharactOverwr">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:Bapi1003CharactOverwr" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TableOfBapi1003CharactOverwrNew">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:Bapi1003CharactOverwrNew" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TableOfBapi1003Charvaltext">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:Bapi1003Charvaltext" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TableOfBapi1003CharvaltextNew">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:Bapi1003CharvaltextNew" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TableOfBapi1003CharactValueOvr">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:Bapi1003CharactValueOvr" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TableOfBapi1003CharactValueOvrNew">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:Bapi1003CharactValueOvrNew" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TableOfBapi1003Charact">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:Bapi1003Charact" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TableOfBapi1003CharactNew">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:Bapi1003CharactNew" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TableOfBapi1003Catch">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:Bapi1003Catch" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TableOfBapi1003CatchNew">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:Bapi1003CatchNew" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TableOfBapi1003Longtext">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:Bapi1003Longtext" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TableOfBapiret2">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:Bapiret2" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TableOfBapi1003CharactR">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:Bapi1003CharactR" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TableOfBapi1003CharValR">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:Bapi1003CharValR" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TableOfBapi1003CatchR">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:Bapi1003CatchR" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TableOfBapi1003LongtextR">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:Bapi1003LongtextR" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TableOfBapiclassrangegroup">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:Bapiclassrangegroup" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TableOfBapiclasssel">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:Bapiclasssel" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TableOfBapiclasslist">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:Bapiclasslist" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TableOfBapiChar">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:Char" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TableOfBapiCharValues">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:CharValues" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TableOfBapiClassObjects">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:ClassObjects" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TableOfBapiObjectValues">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:ObjectValues" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TableOfBapiSelectionCriterions">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:SelectionCriterions" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TableOfBapiSelectedObjects">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:SelectedObjects" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TableOfBapi1003AllocValues">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:Bapi1003AllocValues" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TableOfBapi1003Tree">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:Bapi1003Tree" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ClassChange">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="ChangeNumber" type="n0:char12" />
+            <xsd:element minOccurs="0" name="CharactValueOverwrit" type="tns:TableOfBapi1003CharactValueOvr" />
+            <xsd:element minOccurs="0" name="CharactValueOverwritNew" type="tns:TableOfBapi1003CharactValueOvrNew" />
+            <xsd:element minOccurs="0" name="CharacteristicOverwrite" type="tns:TableOfBapi1003CharactOverwr" />
+            <xsd:element minOccurs="0" name="CharacteristicOverwriteNew" type="tns:TableOfBapi1003CharactOverwrNew" />
+            <xsd:element minOccurs="0" name="CharacteristicValueTextOvrNew" type="tns:TableOfBapi1003CharvaltextNew" />
+            <xsd:element minOccurs="0" name="CharacteristicValuetextOvr" type="tns:TableOfBapi1003Charvaltext" />
+            <xsd:element minOccurs="0" name="ClassAdditional" type="tns:Bapi1003Add" />
+            <xsd:element minOccurs="0" name="ClassAdditionalNew" type="tns:Bapi1003AddNew" />
+            <xsd:element name="ClassBasicData" type="tns:Bapi1003Basic" />
+            <xsd:element name="ClassBasicDataNew" type="tns:Bapi1003BasicNew" />
+            <xsd:element minOccurs="0" name="ClassCharacteristics" type="tns:TableOfBapi1003Charact" />
+            <xsd:element minOccurs="0" name="ClassCharacteristicsNew" type="tns:TableOfBapi1003CharactNew" />
+            <xsd:element name="ClassDescriptions" type="tns:TableOfBapi1003Catch" />
+            <xsd:element name="ClassDescriptionsNew" type="tns:TableOfBapi1003CatchNew" />
+            <xsd:element minOccurs="0" name="ClassDocument" type="tns:Bapi1003Docu" />
+            <xsd:element minOccurs="0" name="ClassDocumentNew" type="tns:Bapi1003DocuNew" />
+            <xsd:element minOccurs="0" name="ClassLongTexts" type="tns:TableOfBapi1003Longtext" />
+            <xsd:element minOccurs="0" name="ClassLongTextsNew" type="tns:TableOfBapi1003Longtext" />
+            <xsd:element name="ClassNum" type="n0:char18" />
+            <xsd:element minOccurs="0" name="ClassStandard" type="tns:Bapi1003Stand" />
+            <xsd:element minOccurs="0" name="ClassStandardNew" type="tns:Bapi1003StandNew" />
+            <xsd:element name="ClassType" type="n0:char3" />
+            <xsd:element minOccurs="0" name="Keydate" type="n0:date10" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ClassChangeResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Return" type="tns:TableOfBapiret2" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ClassCreate">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="ChangeNumber" type="n0:char12" />
+            <xsd:element minOccurs="0" name="CharactOverwrite" type="tns:TableOfBapi1003CharactOverwr" />
+            <xsd:element minOccurs="0" name="CharactValueOverwrite" type="tns:TableOfBapi1003CharactValueOvr" />
+            <xsd:element minOccurs="0" name="CharactValueTextOvr" type="tns:TableOfBapi1003Charvaltext" />
+            <xsd:element minOccurs="0" name="ClassAdditional" type="tns:Bapi1003Add" />
+            <xsd:element name="ClassBasicData" type="tns:Bapi1003Basic" />
+            <xsd:element minOccurs="0" name="ClassCharacteristics" type="tns:TableOfBapi1003Charact" />
+            <xsd:element name="ClassDescriptions" type="tns:TableOfBapi1003Catch" />
+            <xsd:element minOccurs="0" name="ClassDocument" type="tns:Bapi1003Docu" />
+            <xsd:element minOccurs="0" name="ClassLongTexts" type="tns:TableOfBapi1003Longtext" />
+            <xsd:element name="ClassNumNew" type="n0:char18" />
+            <xsd:element minOccurs="0" name="ClassStandard" type="tns:Bapi1003Stand" />
+            <xsd:element name="ClassTypeNew" type="n0:char3" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ClassCreateResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Return" type="tns:TableOfBapiret2" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ClassDelete">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="ChangeNumber" type="n0:char12" />
+            <xsd:element name="ClassNum" type="n0:char18" />
+            <xsd:element name="ClassType" type="n0:char3" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ClassDeleteResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Return" type="tns:TableOfBapiret2" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ClassExistenceCheck">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ClassNum" type="n0:char18" />
+            <xsd:element name="ClassType" type="n0:char3" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ClassExistenceCheckResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Return" type="tns:TableOfBapiret2" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ClassGetDetail">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ClassNum" type="n0:char18" />
+            <xsd:element name="ClassType" type="n0:char3" />
+            <xsd:element minOccurs="0" name="Keydate" type="n0:date10" />
+            <xsd:element minOccurs="0" name="LanguInt" type="n0:lang" />
+            <xsd:element minOccurs="0" name="LanguIso" type="n0:char2" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ClassGetDetailResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ClassAdditional" type="tns:Bapi1003Add" />
+            <xsd:element name="ClassBasicData" type="tns:Bapi1003Basic" />
+            <xsd:element minOccurs="0" name="ClassCharValues" type="tns:TableOfBapi1003CharValR" />
+            <xsd:element minOccurs="0" name="ClassCharacteristics" type="tns:TableOfBapi1003CharactR" />
+            <xsd:element minOccurs="0" name="ClassDescriptions" type="tns:TableOfBapi1003CatchR" />
+            <xsd:element name="ClassDocument" type="tns:Bapi1003Docu" />
+            <xsd:element minOccurs="0" name="ClassLongtexts" type="tns:TableOfBapi1003LongtextR" />
+            <xsd:element name="ClassStandard" type="tns:Bapi1003Stand" />
+            <xsd:element name="Return" type="tns:Bapiret2" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ClassGetList">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="ClassGroupRange" type="tns:TableOfBapiclassrangegroup" />
+            <xsd:element name="ClassSelection" type="tns:TableOfBapiclasssel" />
+            <xsd:element name="Classtype_Imp" type="n0:char3" />
+            <xsd:element minOccurs="0" name="Keydate" type="n0:date10" />
+            <xsd:element minOccurs="0" name="MaxRows" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ClassGetListResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ClassList" type="tns:TableOfBapiclasslist" />
+            <xsd:element name="Return" type="tns:TableOfBapiret2" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ClassGetstatus">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ClassNum" type="n0:char18" />
+            <xsd:element name="ClassType" type="n0:char3" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ClassGetstatusResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Return" type="tns:TableOfBapiret2" />
+            <xsd:element name="StatusFlags" type="tns:Bapi1003Statusinfo" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ClassGetCharacteristics">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="CharValues" type="tns:TableOfBapiCharValues" />
+            <xsd:element name="Characteristics" type="tns:TableOfBapiChar" />
+            <xsd:element name="ClassNum" type="n0:char18" />
+            <xsd:element name="ClassType" type="n0:char3" />
+            <xsd:element minOccurs="0" name="KeyDate" type="n0:date10" />
+            <xsd:element minOccurs="0" name="LanguInt" type="n0:lang" />
+            <xsd:element minOccurs="0" name="LanguIso" type="n0:char2" />
+            <xsd:element minOccurs="0" name="WithValues" type="n0:char1" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ClassGetCharacteristicsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="CharValues" type="tns:TableOfBapiCharValues" />
+            <xsd:element name="Characteristics" type="tns:TableOfBapiChar" />
+            <xsd:element name="Return" type="tns:Bapireturn1" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ClassGetClassifications">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="CharactsOfClassOnly" type="tns:Bapiflag" />
+            <xsd:element name="ClassNum" type="n0:char18" />
+            <xsd:element name="ClassObjects" type="tns:TableOfBapiClassObjects" />
+            <xsd:element name="ClassType" type="n0:char3" />
+            <xsd:element minOccurs="0" name="KeyDate" type="n0:date10" />
+            <xsd:element minOccurs="0" name="LanguInt" type="n0:lang" />
+            <xsd:element minOccurs="0" name="LanguIso" type="n0:char2" />
+            <xsd:element name="ObjectClassification" type="tns:TableOfBapiObjectValues" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ClassGetClassificationsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ClassObjects" type="tns:TableOfBapiClassObjects" />
+            <xsd:element name="ObjectClassification" type="tns:TableOfBapiObjectValues" />
+            <xsd:element name="Return" type="tns:Bapireturn1" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ClassSelectObjects">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ClassNum" type="n0:char18" />
+            <xsd:element name="ClassType" type="n0:char3" />
+            <xsd:element minOccurs="0" name="IStatusIncomplete" type="n0:char1" />
+            <xsd:element minOccurs="0" name="IStatusLocked" type="n0:char1" />
+            <xsd:element minOccurs="0" name="Keydate" type="n0:date10" />
+            <xsd:element minOccurs="0" name="LanguInt" type="n0:lang" />
+            <xsd:element minOccurs="0" name="LanguIso" type="n0:char2" />
+            <xsd:element minOccurs="0" name="MaxHits" type="xsd:int" />
+            <xsd:element name="SelectionCriterions" type="tns:TableOfBapiSelectionCriterions" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ClassSelectObjectsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="ObjectClassification" type="tns:TableOfBapiObjectValues" />
+            <xsd:element name="Return" type="tns:Bapireturn1" />
+            <xsd:element name="SelectedObjects" type="tns:TableOfBapiSelectedObjects" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ClassAddSubclassAllocation">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="ChangeNumber" type="n0:char12" />
+            <xsd:element name="ClassNum" type="n0:char18" />
+            <xsd:element name="ClassType" type="n0:char3" />
+            <xsd:element minOccurs="0" name="HierarchyValues" type="tns:TableOfBapi1003AllocValues" />
+            <xsd:element minOccurs="0" name="KeyDate" type="n0:date10" />
+            <xsd:element minOccurs="0" name="Status" type="n0:char1" />
+            <xsd:element name="Subclass" type="n0:char18" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ClassAddSubclassAllocationResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Return" type="tns:TableOfBapiret2" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ClassAddSubstructure">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="ChangeNumber" type="n0:char12" />
+            <xsd:element name="ClassNum" type="n0:char18" />
+            <xsd:element name="ClassType" type="n0:char3" />
+            <xsd:element minOccurs="0" name="KeyDate" type="n0:date10" />
+            <xsd:element name="SubstrucList" type="tns:TableOfBapi1003Tree" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ClassAddSubstructureResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Return" type="tns:TableOfBapiret2" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ClassChangeSubclassValidation">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="ChangeNumber" type="n0:char12" />
+            <xsd:element name="ClassNum" type="n0:char18" />
+            <xsd:element name="ClassType" type="n0:char3" />
+            <xsd:element minOccurs="0" name="HierarchyValuesNew" type="tns:TableOfBapi1003AllocValues" />
+            <xsd:element minOccurs="0" name="KeyDate" type="n0:date10" />
+            <xsd:element minOccurs="0" name="Status" type="n0:char1" />
+            <xsd:element name="SubClass" type="n0:char18" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ClassChangeSubclassValidationResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Return" type="tns:TableOfBapiret2" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ClassChangeSubstructure">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="ChangeNumber" type="n0:char12" />
+            <xsd:element name="ClassNum" type="n0:char18" />
+            <xsd:element name="ClassType" type="n0:char3" />
+            <xsd:element minOccurs="0" name="KeyDate" type="n0:date10" />
+            <xsd:element name="SubstrucListNew" type="tns:TableOfBapi1003Tree" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ClassChangeSubstructureResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Return" type="tns:TableOfBapiret2" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ClassCheckSubclassAllocation">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ClassNum" type="n0:char18" />
+            <xsd:element name="ClassType" type="n0:char3" />
+            <xsd:element minOccurs="0" name="DirectAllocationOnly" type="n0:char1" />
+            <xsd:element minOccurs="0" name="KeyDate" type="n0:date10" />
+            <xsd:element name="Subclass" type="n0:char18" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ClassCheckSubclassAllocationResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Return" type="tns:TableOfBapiret2" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ClassGetDetailSubclassAllocation">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ClassNum" type="n0:char18" />
+            <xsd:element name="ClassType" type="n0:char3" />
+            <xsd:element minOccurs="0" name="KeyDate" type="n0:date10" />
+            <xsd:element name="Subclass" type="n0:char18" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ClassGetDetailSubclassAllocationResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="HierarchyValues" type="tns:TableOfBapi1003AllocValues" />
+            <xsd:element minOccurs="0" name="Return" type="tns:TableOfBapiret2" />
+            <xsd:element name="Status" type="n0:char1" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ClassGetSubclassAllocations">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ClassNum" type="n0:char18" />
+            <xsd:element name="ClassType" type="n0:char3" />
+            <xsd:element minOccurs="0" name="KeyDate" type="n0:date10" />
+            <xsd:element minOccurs="0" name="with_description" type="n0:char1" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ClassGetSubclassAllocationsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Return" type="tns:TableOfBapiret2" />
+            <xsd:element name="SubClassesList" type="tns:TableOfBapiclasslist" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ClassGetSubstructure">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ClassNum" type="n0:char18" />
+            <xsd:element name="ClassType" type="n0:char3" />
+            <xsd:element minOccurs="0" name="HierarchyDepth" type="xsd:int" />
+            <xsd:element minOccurs="0" name="KeyDate" type="n0:date10" />
+            <xsd:element minOccurs="0" name="with_description" type="n0:char1" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ClassGetSubstructureResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Return" type="tns:TableOfBapiret2" />
+            <xsd:element name="SubstrucList" type="tns:TableOfBapi1003Tree" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ClassGetSuperclassAllocations">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ClassNum" type="n0:char18" />
+            <xsd:element name="ClassType" type="n0:char3" />
+            <xsd:element minOccurs="0" name="Keydate" type="n0:date10" />
+            <xsd:element minOccurs="0" name="with_description" type="n0:char1" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ClassGetSuperclassAllocationsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Return" type="tns:TableOfBapiret2" />
+            <xsd:element name="SuperClassesList" type="tns:TableOfBapiclasslist" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ClassGetSuperstructure">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ClassNum" type="n0:char18" />
+            <xsd:element name="ClassType" type="n0:char3" />
+            <xsd:element minOccurs="0" name="KeyDate" type="n0:date10" />
+            <xsd:element minOccurs="0" name="with_description" type="n0:char1" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ClassGetSuperstructureResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Return" type="tns:TableOfBapiret2" />
+            <xsd:element name="SuperstrucList" type="tns:TableOfBapi1003Tree" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ClassRemoveSubclass">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="ChangeNumber" type="n0:char12" />
+            <xsd:element name="ClassNum" type="n0:char18" />
+            <xsd:element name="ClassType" type="n0:char3" />
+            <xsd:element minOccurs="0" name="KeyDate" type="n0:date10" />
+            <xsd:element name="Subclass" type="n0:char18" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ClassRemoveSubclassResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Return" type="tns:TableOfBapiret2" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ClassRemoveSubstructure">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="ChangeNumber" type="n0:char12" />
+            <xsd:element minOccurs="0" name="CheckAllRoots" type="n0:char1" />
+            <xsd:element name="ClassNum" type="n0:char18" />
+            <xsd:element name="ClassType" type="n0:char3" />
+            <xsd:element minOccurs="0" name="KeyDate" type="n0:date10" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ClassRemoveSubstructureResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Return" type="tns:TableOfBapiret2" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="BapiServiceTransactionCommit">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="WAIT" type="n0:char1" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="BapiServiceTransactionCommitResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Return" type="tns:Bapiret2" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="BapiServiceTransactionRollback">
+        <xsd:complexType>
+          <xsd:sequence />
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="BapiServiceTransactionRollbackResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Return" type="tns:Bapiret2" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ClassChange">
+    <wsdl:part name="parameters" element="tns:ClassChange" />
+  </wsdl:message>
+  <wsdl:message name="ClassChangeResponse">
+    <wsdl:part name="parameter" element="tns:ClassChangeResponse" />
+  </wsdl:message>
+  <wsdl:message name="ClassCreate">
+    <wsdl:part name="parameters" element="tns:ClassCreate" />
+  </wsdl:message>
+  <wsdl:message name="ClassCreateResponse">
+    <wsdl:part name="parameter" element="tns:ClassCreateResponse" />
+  </wsdl:message>
+  <wsdl:message name="ClassDelete">
+    <wsdl:part name="parameters" element="tns:ClassDelete" />
+  </wsdl:message>
+  <wsdl:message name="ClassDeleteResponse">
+    <wsdl:part name="parameter" element="tns:ClassDeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="ClassExistenceCheck">
+    <wsdl:part name="parameters" element="tns:ClassExistenceCheck" />
+  </wsdl:message>
+  <wsdl:message name="ClassExistenceCheckResponse">
+    <wsdl:part name="parameter" element="tns:ClassExistenceCheckResponse" />
+  </wsdl:message>
+  <wsdl:message name="ClassGetDetail">
+    <wsdl:part name="parameters" element="tns:ClassGetDetail" />
+  </wsdl:message>
+  <wsdl:message name="ClassGetDetailResponse">
+    <wsdl:part name="parameter" element="tns:ClassGetDetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="ClassGetList">
+    <wsdl:part name="parameters" element="tns:ClassGetList" />
+  </wsdl:message>
+  <wsdl:message name="ClassGetListResponse">
+    <wsdl:part name="parameter" element="tns:ClassGetListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ClassGetstatus">
+    <wsdl:part name="parameters" element="tns:ClassGetstatus" />
+  </wsdl:message>
+  <wsdl:message name="ClassGetstatusResponse">
+    <wsdl:part name="parameter" element="tns:ClassGetstatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="ClassGetCharacteristics">
+    <wsdl:part name="parameters" element="tns:ClassGetCharacteristics" />
+  </wsdl:message>
+  <wsdl:message name="ClassGetCharacteristicsResponse">
+    <wsdl:part name="parameter" element="tns:ClassGetCharacteristicsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ClassGetClassifications">
+    <wsdl:part name="parameters" element="tns:ClassGetClassifications" />
+  </wsdl:message>
+  <wsdl:message name="ClassGetClassificationsResponse">
+    <wsdl:part name="parameter" element="tns:ClassGetClassificationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ClassSelectObjects">
+    <wsdl:part name="parameters" element="tns:ClassSelectObjects" />
+  </wsdl:message>
+  <wsdl:message name="ClassSelectObjectsResponse">
+    <wsdl:part name="parameter" element="tns:ClassSelectObjectsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ClassAddSubclassAllocation">
+    <wsdl:part name="parameters" element="tns:ClassAddSubclassAllocation" />
+  </wsdl:message>
+  <wsdl:message name="ClassAddSubclassAllocationResponse">
+    <wsdl:part name="parameter" element="tns:ClassAddSubclassAllocationResponse" />
+  </wsdl:message>
+  <wsdl:message name="ClassAddSubstructure">
+    <wsdl:part name="parameters" element="tns:ClassAddSubstructure" />
+  </wsdl:message>
+  <wsdl:message name="ClassAddSubstructureResponse">
+    <wsdl:part name="parameter" element="tns:ClassAddSubstructureResponse" />
+  </wsdl:message>
+  <wsdl:message name="ClassChangeSubclassValidation">
+    <wsdl:part name="parameters" element="tns:ClassChangeSubclassValidation" />
+  </wsdl:message>
+  <wsdl:message name="ClassChangeSubclassValidationResponse">
+    <wsdl:part name="parameter" element="tns:ClassChangeSubclassValidationResponse" />
+  </wsdl:message>
+  <wsdl:message name="ClassChangeSubstructure">
+    <wsdl:part name="parameters" element="tns:ClassChangeSubstructure" />
+  </wsdl:message>
+  <wsdl:message name="ClassChangeSubstructureResponse">
+    <wsdl:part name="parameter" element="tns:ClassChangeSubstructureResponse" />
+  </wsdl:message>
+  <wsdl:message name="ClassCheckSubclassAllocation">
+    <wsdl:part name="parameters" element="tns:ClassCheckSubclassAllocation" />
+  </wsdl:message>
+  <wsdl:message name="ClassCheckSubclassAllocationResponse">
+    <wsdl:part name="parameter" element="tns:ClassCheckSubclassAllocationResponse" />
+  </wsdl:message>
+  <wsdl:message name="ClassGetDetailSubclassAllocation">
+    <wsdl:part name="parameters" element="tns:ClassGetDetailSubclassAllocation" />
+  </wsdl:message>
+  <wsdl:message name="ClassGetDetailSubclassAllocationResponse">
+    <wsdl:part name="parameter" element="tns:ClassGetDetailSubclassAllocationResponse" />
+  </wsdl:message>
+  <wsdl:message name="ClassGetSubclassAllocations">
+    <wsdl:part name="parameters" element="tns:ClassGetSubclassAllocations" />
+  </wsdl:message>
+  <wsdl:message name="ClassGetSubclassAllocationsResponse">
+    <wsdl:part name="parameter" element="tns:ClassGetSubclassAllocationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ClassGetSubstructure">
+    <wsdl:part name="parameters" element="tns:ClassGetSubstructure" />
+  </wsdl:message>
+  <wsdl:message name="ClassGetSubstructureResponse">
+    <wsdl:part name="parameter" element="tns:ClassGetSubstructureResponse" />
+  </wsdl:message>
+  <wsdl:message name="ClassGetSuperclassAllocations">
+    <wsdl:part name="parameters" element="tns:ClassGetSuperclassAllocations" />
+  </wsdl:message>
+  <wsdl:message name="ClassGetSuperclassAllocationsResponse">
+    <wsdl:part name="parameter" element="tns:ClassGetSuperclassAllocationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ClassGetSuperstructure">
+    <wsdl:part name="parameters" element="tns:ClassGetSuperstructure" />
+  </wsdl:message>
+  <wsdl:message name="ClassGetSuperstructureResponse">
+    <wsdl:part name="parameter" element="tns:ClassGetSuperstructureResponse" />
+  </wsdl:message>
+  <wsdl:message name="ClassRemoveSubclass">
+    <wsdl:part name="parameters" element="tns:ClassRemoveSubclass" />
+  </wsdl:message>
+  <wsdl:message name="ClassRemoveSubclassResponse">
+    <wsdl:part name="parameter" element="tns:ClassRemoveSubclassResponse" />
+  </wsdl:message>
+  <wsdl:message name="ClassRemoveSubstructure">
+    <wsdl:part name="parameters" element="tns:ClassRemoveSubstructure" />
+  </wsdl:message>
+  <wsdl:message name="ClassRemoveSubstructureResponse">
+    <wsdl:part name="parameter" element="tns:ClassRemoveSubstructureResponse" />
+  </wsdl:message>
+  <wsdl:message name="BapiServiceTransactionCommit">
+    <wsdl:part name="parameters" element="tns:BapiServiceTransactionCommit" />
+  </wsdl:message>
+  <wsdl:message name="BapiServiceTransactionCommitResponse">
+    <wsdl:part name="parameter" element="tns:BapiServiceTransactionCommitResponse" />
+  </wsdl:message>
+  <wsdl:message name="BapiServiceTransactionRollback">
+    <wsdl:part name="parameters" element="tns:BapiServiceTransactionRollback" />
+  </wsdl:message>
+  <wsdl:message name="BapiServiceTransactionRollbackResponse">
+    <wsdl:part name="parameter" element="tns:BapiServiceTransactionRollbackResponse" />
+  </wsdl:message>
+  <wsdl:portType name="Z_HH_Class">
+    <wsp:Policy>
+      <wsp:PolicyReference URI="#IF_IF_Z_HH_Class" />
+    </wsp:Policy>
+    <wsdl:operation name="ClassChange">
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_IF_OP_ClassChange" />
+      </wsp:Policy>
+      <wsdl:input message="tns:ClassChange" />
+      <wsdl:output message="tns:ClassChangeResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ClassCreate">
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_IF_OP_ClassCreate" />
+      </wsp:Policy>
+      <wsdl:input message="tns:ClassCreate" />
+      <wsdl:output message="tns:ClassCreateResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ClassDelete">
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_IF_OP_ClassDelete" />
+      </wsp:Policy>
+      <wsdl:input message="tns:ClassDelete" />
+      <wsdl:output message="tns:ClassDeleteResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ClassExistenceCheck">
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_IF_OP_ClassExistenceCheck" />
+      </wsp:Policy>
+      <wsdl:input message="tns:ClassExistenceCheck" />
+      <wsdl:output message="tns:ClassExistenceCheckResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ClassGetDetail">
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_IF_OP_ClassGetDetail" />
+      </wsp:Policy>
+      <wsdl:input message="tns:ClassGetDetail" />
+      <wsdl:output message="tns:ClassGetDetailResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ClassGetList">
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_IF_OP_ClassGetList" />
+      </wsp:Policy>
+      <wsdl:input message="tns:ClassGetList" />
+      <wsdl:output message="tns:ClassGetListResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ClassGetstatus">
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_IF_OP_ClassGetstatus" />
+      </wsp:Policy>
+      <wsdl:input message="tns:ClassGetstatus" />
+      <wsdl:output message="tns:ClassGetstatusResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ClassGetCharacteristics">
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_IF_OP_ClassGetCharacteristics" />
+      </wsp:Policy>
+      <wsdl:input message="tns:ClassGetCharacteristics" />
+      <wsdl:output message="tns:ClassGetCharacteristicsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ClassGetClassifications">
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_IF_OP_ClassGetClassifications" />
+      </wsp:Policy>
+      <wsdl:input message="tns:ClassGetClassifications" />
+      <wsdl:output message="tns:ClassGetClassificationsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ClassSelectObjects">
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_IF_OP_ClassSelectObjects" />
+      </wsp:Policy>
+      <wsdl:input message="tns:ClassSelectObjects" />
+      <wsdl:output message="tns:ClassSelectObjectsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ClassAddSubclassAllocation">
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_IF_OP_ClassAddSubclassAllocation" />
+      </wsp:Policy>
+      <wsdl:input message="tns:ClassAddSubclassAllocation" />
+      <wsdl:output message="tns:ClassAddSubclassAllocationResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ClassAddSubstructure">
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_IF_OP_ClassAddSubstructure" />
+      </wsp:Policy>
+      <wsdl:input message="tns:ClassAddSubstructure" />
+      <wsdl:output message="tns:ClassAddSubstructureResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ClassChangeSubclassValidation">
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_IF_OP_ClassChangeSubclassValidation" />
+      </wsp:Policy>
+      <wsdl:input message="tns:ClassChangeSubclassValidation" />
+      <wsdl:output message="tns:ClassChangeSubclassValidationResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ClassChangeSubstructure">
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_IF_OP_ClassChangeSubstructure" />
+      </wsp:Policy>
+      <wsdl:input message="tns:ClassChangeSubstructure" />
+      <wsdl:output message="tns:ClassChangeSubstructureResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ClassCheckSubclassAllocation">
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_IF_OP_ClassCheckSubclassAllocation" />
+      </wsp:Policy>
+      <wsdl:input message="tns:ClassCheckSubclassAllocation" />
+      <wsdl:output message="tns:ClassCheckSubclassAllocationResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ClassGetDetailSubclassAllocation">
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_IF_OP_ClassGetDetailSubclassAllocation" />
+      </wsp:Policy>
+      <wsdl:input message="tns:ClassGetDetailSubclassAllocation" />
+      <wsdl:output message="tns:ClassGetDetailSubclassAllocationResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ClassGetSubclassAllocations">
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_IF_OP_ClassGetSubclassAllocations" />
+      </wsp:Policy>
+      <wsdl:input message="tns:ClassGetSubclassAllocations" />
+      <wsdl:output message="tns:ClassGetSubclassAllocationsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ClassGetSubstructure">
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_IF_OP_ClassGetSubstructure" />
+      </wsp:Policy>
+      <wsdl:input message="tns:ClassGetSubstructure" />
+      <wsdl:output message="tns:ClassGetSubstructureResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ClassGetSuperclassAllocations">
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_IF_OP_ClassGetSuperclassAllocations" />
+      </wsp:Policy>
+      <wsdl:input message="tns:ClassGetSuperclassAllocations" />
+      <wsdl:output message="tns:ClassGetSuperclassAllocationsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ClassGetSuperstructure">
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_IF_OP_ClassGetSuperstructure" />
+      </wsp:Policy>
+      <wsdl:input message="tns:ClassGetSuperstructure" />
+      <wsdl:output message="tns:ClassGetSuperstructureResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ClassRemoveSubclass">
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_IF_OP_ClassRemoveSubclass" />
+      </wsp:Policy>
+      <wsdl:input message="tns:ClassRemoveSubclass" />
+      <wsdl:output message="tns:ClassRemoveSubclassResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ClassRemoveSubstructure">
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_IF_OP_ClassRemoveSubstructure" />
+      </wsp:Policy>
+      <wsdl:input message="tns:ClassRemoveSubstructure" />
+      <wsdl:output message="tns:ClassRemoveSubstructureResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="BapiServiceTransactionCommit">
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_IF_OP_BapiServiceTransactionCommit" />
+      </wsp:Policy>
+      <wsdl:input message="tns:BapiServiceTransactionCommit" />
+      <wsdl:output message="tns:BapiServiceTransactionCommitResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="BapiServiceTransactionRollback">
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_IF_OP_BapiServiceTransactionRollback" />
+      </wsp:Policy>
+      <wsdl:input message="tns:BapiServiceTransactionRollback" />
+      <wsdl:output message="tns:BapiServiceTransactionRollbackResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Z_HH_CLASS" type="tns:Z_HH_Class">
+    <wsp:Policy>
+      <wsp:PolicyReference URI="#BN_BN_Z_HH_CLASS" />
+    </wsp:Policy>
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ClassChange">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClassCreate">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClassDelete">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClassExistenceCheck">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClassGetDetail">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClassGetList">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClassGetstatus">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClassGetCharacteristics">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClassGetClassifications">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClassSelectObjects">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClassAddSubclassAllocation">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClassAddSubstructure">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClassChangeSubclassValidation">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClassChangeSubstructure">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClassCheckSubclassAllocation">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClassGetDetailSubclassAllocation">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClassGetSubclassAllocations">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClassGetSubstructure">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClassGetSuperclassAllocations">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClassGetSuperstructure">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClassRemoveSubclass">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClassRemoveSubstructure">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BapiServiceTransactionCommit">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BapiServiceTransactionRollback">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Z_HH_CLASS">
+    <wsdl:port name="Z_HH_CLASS" binding="tns:Z_HH_CLASS">
+      <soap:address location="http://i48lp1.in.tum.de:8048/sap/bc/srt/rfc/sap/z_hh_class/902/z_hh_class/z_hh_class" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

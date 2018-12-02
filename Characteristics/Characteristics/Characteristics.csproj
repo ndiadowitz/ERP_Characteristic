@@ -32,16 +32,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="sapnco, Version=3.0.0.42, Culture=neutral, PublicKeyToken=50436dca5c7f7d23">
-      <HintPath>..\packages\SAPDotNetConnector3.0.3.0\lib\sapnco.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="sapnco_utils, Version=3.0.0.42, Culture=neutral, PublicKeyToken=50436dca5c7f7d23">
-      <HintPath>..\packages\SAPDotNetConnector3.0.3.0\lib\sapnco_utils.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -53,10 +47,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="erp\Characteristics.cs" />
-    <Compile Include="erp\Erp.cs" />
-    <Compile Include="erp\ErpConnection.cs" />
-    <Compile Include="erp\WasteContainer.cs" />
+    <Compile Include="Connected Services\CharactersiticWSDL\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\Class\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,9 +74,230 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="bin\Debug\libicudecnumber.dll" />
-    <None Include="bin\Release\libicudecnumber.dll" />
-    <None Include="packages.config" />
+    <None Include="Connected Services\CharactersiticWSDL\characteristic.wsdl" />
+    <None Include="Connected Services\CharactersiticWSDL\Characteristics.CharactersiticWSDL.BapiServiceTransactionCommitResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CharactersiticWSDL\Characteristics.CharactersiticWSDL.BapiServiceTransactionCommitResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CharactersiticWSDL\Characteristics.CharactersiticWSDL.BapiServiceTransactionRollbackResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CharactersiticWSDL\Characteristics.CharactersiticWSDL.BapiServiceTransactionRollbackResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CharactersiticWSDL\Characteristics.CharactersiticWSDL.CharacteristicAddLongTextResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CharactersiticWSDL\Characteristics.CharactersiticWSDL.CharacteristicAddLongTextResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CharactersiticWSDL\Characteristics.CharactersiticWSDL.CharacteristicChangeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CharactersiticWSDL\Characteristics.CharactersiticWSDL.CharacteristicChangeResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CharactersiticWSDL\Characteristics.CharactersiticWSDL.CharacteristicCreateResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CharactersiticWSDL\Characteristics.CharactersiticWSDL.CharacteristicCreateResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CharactersiticWSDL\Characteristics.CharactersiticWSDL.CharacteristicDeleteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CharactersiticWSDL\Characteristics.CharactersiticWSDL.CharacteristicDeleteResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CharactersiticWSDL\Characteristics.CharactersiticWSDL.CharacteristicExistenceCheckResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CharactersiticWSDL\Characteristics.CharactersiticWSDL.CharacteristicExistenceCheckResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CharactersiticWSDL\Characteristics.CharactersiticWSDL.CharacteristicGetDetailResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CharactersiticWSDL\Characteristics.CharactersiticWSDL.CharacteristicGetDetailResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CharactersiticWSDL\Characteristics.CharactersiticWSDL.CharacteristicGetListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CharactersiticWSDL\Characteristics.CharactersiticWSDL.CharacteristicGetListResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CharactersiticWSDL\Characteristics.CharactersiticWSDL.CharacteristicGetLongTextResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CharactersiticWSDL\Characteristics.CharactersiticWSDL.CharacteristicGetLongTextResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CharactersiticWSDL\Characteristics.CharactersiticWSDL.CharacteristicGetWhereUsedListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CharactersiticWSDL\Characteristics.CharactersiticWSDL.CharacteristicGetWhereUsedListResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CharactersiticWSDL\Characteristics.CharactersiticWSDL.CharacteristicRemoveLongTextResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CharactersiticWSDL\Characteristics.CharactersiticWSDL.CharacteristicRemoveLongTextResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CharactersiticWSDL\Characteristics.CharactersiticWSDL.CharacteristicRenameResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CharactersiticWSDL\Characteristics.CharactersiticWSDL.CharacteristicRenameResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Class\Characteristics.Class.BapiServiceTransactionCommitResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Class\Characteristics.Class.BapiServiceTransactionCommitResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Class\Characteristics.Class.BapiServiceTransactionRollbackResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Class\Characteristics.Class.BapiServiceTransactionRollbackResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Class\Characteristics.Class.ClassAddSubclassAllocationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Class\Characteristics.Class.ClassAddSubclassAllocationResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Class\Characteristics.Class.ClassAddSubstructureResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Class\Characteristics.Class.ClassAddSubstructureResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Class\Characteristics.Class.ClassChangeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Class\Characteristics.Class.ClassChangeResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Class\Characteristics.Class.ClassChangeSubclassValidationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Class\Characteristics.Class.ClassChangeSubclassValidationResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Class\Characteristics.Class.ClassChangeSubstructureResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Class\Characteristics.Class.ClassChangeSubstructureResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Class\Characteristics.Class.ClassCheckSubclassAllocationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Class\Characteristics.Class.ClassCheckSubclassAllocationResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Class\Characteristics.Class.ClassCreateResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Class\Characteristics.Class.ClassCreateResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Class\Characteristics.Class.ClassDeleteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Class\Characteristics.Class.ClassDeleteResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Class\Characteristics.Class.ClassExistenceCheckResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Class\Characteristics.Class.ClassExistenceCheckResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Class\Characteristics.Class.ClassGetCharacteristicsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Class\Characteristics.Class.ClassGetCharacteristicsResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Class\Characteristics.Class.ClassGetClassificationsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Class\Characteristics.Class.ClassGetClassificationsResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Class\Characteristics.Class.ClassGetDetailResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Class\Characteristics.Class.ClassGetDetailResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Class\Characteristics.Class.ClassGetDetailSubclassAllocationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Class\Characteristics.Class.ClassGetDetailSubclassAllocationResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Class\Characteristics.Class.ClassGetListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Class\Characteristics.Class.ClassGetListResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Class\Characteristics.Class.ClassGetstatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Class\Characteristics.Class.ClassGetstatusResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Class\Characteristics.Class.ClassGetSubclassAllocationsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Class\Characteristics.Class.ClassGetSubclassAllocationsResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Class\Characteristics.Class.ClassGetSubstructureResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Class\Characteristics.Class.ClassGetSubstructureResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Class\Characteristics.Class.ClassGetSuperclassAllocationsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Class\Characteristics.Class.ClassGetSuperclassAllocationsResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Class\Characteristics.Class.ClassGetSuperstructureResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Class\Characteristics.Class.ClassGetSuperstructureResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Class\Characteristics.Class.ClassRemoveSubclassResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Class\Characteristics.Class.ClassRemoveSubclassResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Class\Characteristics.Class.ClassRemoveSubstructureResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Class\Characteristics.Class.ClassRemoveSubstructureResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Class\Characteristics.Class.ClassSelectObjectsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Class\Characteristics.Class.ClassSelectObjectsResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Class\class.wsdl" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -88,7 +309,40 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\CharactersiticWSDL\" />
+    <WCFMetadataStorage Include="Connected Services\Class\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\CharactersiticWSDL\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\CharactersiticWSDL\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\CharactersiticWSDL\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\Class\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\Class\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\Class\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
