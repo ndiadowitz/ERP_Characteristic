@@ -1,27 +1,19 @@
-using SAP.Middleware.Connector;
+using System.ServiceModel.Description;
 
 namespace Characteristics.erp
 {
     public abstract class Erp
     {
-        private ErpConnection _connection;
-
-        private readonly RfcRepository _repository;
-
+        private ErpConnection Connection { get; }
+        
         protected Erp(ErpConnection connection)
         {
-            _connection = connection;
-
-            RfcDestinationManager.RegisterDestinationConfiguration(connection);
-
-            var dest = RfcDestinationManager.GetDestination(connection.Destination);
-
-            _repository = dest.Repository;
+            Connection = connection;
         }
 
-        protected RfcRepository GetRepository()
+        protected void SetCredentials(ClientCredentials clientCredentials)
         {
-            return _repository;
+            Connection.SetClientCredentials(clientCredentials);
         }
     }
 }

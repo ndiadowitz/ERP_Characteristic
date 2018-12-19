@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Characteristics.erp;
+using Characteristics.erp.Util;
 
 namespace Characteristics
 {
@@ -15,6 +10,22 @@ namespace Characteristics
         public Form1()
         {
             InitializeComponent();
+
+            var connection = new ErpConnection("IDES-041", "1student");
+
+            
+            var sapClass = new ErpClass(connection);
+
+            var classListResponse = sapClass.GetList("001", GetList.Sing.Inclusive, GetList.Options.GreaterEqual, "0");
+           
+            Console.Out.WriteLine(classListResponse);
+
+            
+            var characteristics = new ErpCharacteristics(connection);
+
+            var listResponse = characteristics.GetList(GetList.Sing.Inclusive, GetList.Options.GreaterEqual, "0");
+
+            Console.Out.WriteLine(listResponse);
         }
     }
 }

@@ -47,6 +47,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Erp\Util\GetList.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Erp\ErpCharacteristics.cs" />
+    <Compile Include="Erp\Erp.cs" />
+    <Compile Include="Erp\ErpConnection.cs" />
+    <Compile Include="erp\ErpClass.cs" />
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="Connected Services\CharactersiticWSDL\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -343,6 +352,9 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="erp\Util" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

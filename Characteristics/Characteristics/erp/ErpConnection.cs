@@ -1,61 +1,23 @@
-using SAP.Middleware.Connector;
+using System.ServiceModel.Description;
 
 namespace Characteristics.erp
 {
-    public class ErpConnection : IDestinationConfiguration
+    public class ErpConnection
     {
-        public ErpConnection(string destination, string user, string password, string systemId, int systemNumber,
-            string appServerHost)
+        public ErpConnection(string userName, string password)
         {
-            Destination = destination;
-            User = user;
+            UserName = userName;
             Password = password;
-            SystemId = systemId;
-            SystemNumber = systemNumber;
-            AppServerHost = appServerHost;
-
-
-            PoolSize = 5;
-            Language = "EN";
-            Client = 100;
         }
 
-        public string Destination { private set; get; }
 
-        public int PoolSize { set; get; }
-        public string Language { set; get; }
-        public int Client { set; get; }
-        private string Password { set; get; }
-        private string User { set; get; }
-        private string SystemId { set; get; }
-        private int SystemNumber { set; get; }
-        private string AppServerHost { set; get; }
+        private string Password { get; }
+        private string UserName { get; }
 
-
-        public RfcConfigParameters GetParameters(string destinationName)
+        public void SetClientCredentials(ClientCredentials clientCredentials)
         {
-            var parameters = new RfcConfigParameters();
-
-            if (!destinationName.Equals(Destination))
-                return parameters;
-
-            parameters.Add(RfcConfigParameters.AppServerHost, AppServerHost);
-            parameters.Add(RfcConfigParameters.SystemNumber, SystemNumber.ToString());
-            parameters.Add(RfcConfigParameters.SystemID, SystemId);
-            parameters.Add(RfcConfigParameters.User, User);
-            parameters.Add(RfcConfigParameters.Password, Password);
-            parameters.Add(RfcConfigParameters.Client, Client.ToString());
-            parameters.Add(RfcConfigParameters.Language, Language);
-            parameters.Add(RfcConfigParameters.PoolSize, PoolSize.ToString());
-
-            return parameters;
+            clientCredentials.UserName.UserName = UserName;
+            clientCredentials.UserName.Password = Password;
         }
-
-        public bool ChangeEventsSupported()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public event RfcDestinationManager.ConfigurationChangeHandler ConfigurationChanged;
     }
 }
