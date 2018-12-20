@@ -1,3 +1,4 @@
+using System;
 using Characteristics.CharactersiticWSDL;
 using Characteristics.erp.Util;
 
@@ -29,7 +30,14 @@ namespace Characteristics.erp
                 }
             };
 
-            return _sapCharacteristic.CharacteristicGetList(getList);
+            try
+            {
+                return _sapCharacteristic.CharacteristicGetList(getList);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
         }
     }
 }

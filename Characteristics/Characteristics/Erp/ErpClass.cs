@@ -1,3 +1,4 @@
+using System;
 using Characteristics.Class;
 using Characteristics.erp.Util;
 
@@ -30,7 +31,14 @@ namespace Characteristics.erp
                 Classtype_Imp = classTypeNumber
             };
 
-            return _sapClass.ClassGetList(getList);
+            try
+            {
+                return _sapClass.ClassGetList(getList);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
         }
     }
 }

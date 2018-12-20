@@ -14,18 +14,19 @@ namespace Characteristics
             var connection = new ErpConnection("IDES-041", "1student");
 
             
-            var sapClass = new ErpClass(connection);
-
-            var classListResponse = sapClass.GetList("001", GetList.Sing.Inclusive, GetList.Options.GreaterEqual, "0");
-           
-            Console.Out.WriteLine(classListResponse);
-
-            
             var characteristics = new ErpCharacteristics(connection);
 
             var listResponse = characteristics.GetList(GetList.Sing.Inclusive, GetList.Options.GreaterEqual, "0");
 
             Console.Out.WriteLine(listResponse);
+            
+            
+            
+            var sapClass = new ErpClass(connection);
+
+            var classListResponse = sapClass.GetList("001", GetList.Sing.Inclusive, GetList.Options.GreaterEqual, "0");
+           
+            Console.Out.WriteLine(classListResponse);
         }
     }
 }

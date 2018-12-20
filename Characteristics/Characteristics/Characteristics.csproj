@@ -53,7 +53,7 @@
     <Compile Include="Erp\ErpCharacteristics.cs" />
     <Compile Include="Erp\Erp.cs" />
     <Compile Include="Erp\ErpConnection.cs" />
-    <Compile Include="erp\ErpClass.cs" />
+    <Compile Include="Erp\ErpClass.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Connected Services\CharactersiticWSDL\Reference.cs">
