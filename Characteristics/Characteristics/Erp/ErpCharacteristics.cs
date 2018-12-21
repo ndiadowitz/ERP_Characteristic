@@ -1,6 +1,9 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Characteristics.CharactersiticWSDL;
 using Characteristics.erp.Util;
+using Characteristics.Erp.@object;
 
 namespace Characteristics.erp
 {
@@ -14,7 +17,7 @@ namespace Characteristics.erp
             SetCredentials(_sapCharacteristic.ClientCredentials);
         }
 
-        public CharacteristicGetListResponse GetList(GetList.Sing sing, GetList.Options options, string low, string high = "_")
+        public List<Characteristic> GetList(GetList.Sing sing, GetList.Options options, string low, string high = "_")
         {
             var getList = new CharacteristicGetList
             {
@@ -32,7 +35,43 @@ namespace Characteristics.erp
 
             try
             {
-                return _sapCharacteristic.CharacteristicGetList(getList);
+                var data =  _sapCharacteristic.CharacteristicGetList(getList);
+
+                return data.CharactList.Select(bapicharactlist => new Characteristic(bapicharactlist)).ToList();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public CharacteristicGetDetailResponse GetDetail(Characteristic characteristic)
+        {
+            var detail = new CharacteristicGetDetail()
+            {
+                CharactName = characteristic.Name
+            };
+
+            try
+            {
+                return _sapCharacteristic.CharacteristicGetDetail(detail);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public CharacteristicGetLongTextResponse GetLongText(Characteristic characteristic)
+        {
+            var longText = new CharacteristicGetLongText()
+            {
+                CharactName = characteristic.Name
+            };
+
+            try
+            {
+                return _sapCharacteristic.CharacteristicGetLongText(longText);
             }
             catch (Exception)
             {
