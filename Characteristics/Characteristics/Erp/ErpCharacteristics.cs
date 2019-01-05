@@ -17,6 +17,14 @@ namespace Characteristics.erp
             SetCredentials(_sapCharacteristic.ClientCredentials);
         }
 
+        /// <summary>
+        /// Simple search for Characteristic objects
+        /// </summary>
+        /// <param name="sing"><see cref="Util.GetList.Sing"/></param>
+        /// <param name="options"><see cref="Util.GetList.Options"/></param>
+        /// <param name="low">Lower value</param>
+        /// <param name="high">Upper value or '_' for empty</param>
+        /// <returns>List of Characteristics or <code>null</code> on error</returns>
         public List<Characteristic> GetList(GetList.Sing sing, GetList.Options options, string low, string high = "_")
         {
             var getList = new CharacteristicGetList
@@ -45,6 +53,11 @@ namespace Characteristics.erp
             }
         }
 
+        /// <summary>
+        /// Get detail of <see cref="Characteristic"/>
+        /// </summary>
+        /// <param name="characteristic"><see cref="Characteristic"/></param>
+        /// <returns><see cref="CharacteristicGetDetailResponse"/></returns>
         public CharacteristicGetDetailResponse GetDetail(Characteristic characteristic)
         {
             var detail = new CharacteristicGetDetail()
@@ -62,6 +75,11 @@ namespace Characteristics.erp
             }
         }
 
+        /// <summary>
+        /// Get longtext of Characteristic object
+        /// </summary>
+        /// <param name="characteristic"></param>
+        /// <returns></returns>
         public CharacteristicGetLongTextResponse GetLongText(Characteristic characteristic)
         {
             var longText = new CharacteristicGetLongText()

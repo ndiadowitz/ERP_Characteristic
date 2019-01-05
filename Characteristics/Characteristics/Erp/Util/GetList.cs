@@ -4,12 +4,18 @@ namespace Characteristics.erp.Util
 {
     public static class GetList
     {
+        /// <summary>
+        /// Search <code>Inclusive</code> or <code>Exclusive</code> <see cref="Options"/>
+        /// </summary>
         public enum Sing
         {
             Inclusive,
             Exclusive
         }
 
+        /// <summary>
+        /// Search <see cref="Options"/>.
+        /// </summary>
         public enum Options
         {
             Equal,
@@ -24,6 +30,12 @@ namespace Characteristics.erp.Util
             NotContainsPattern
         }
 
+        /// <summary>
+        /// Get value of <see cref="Sing"/>.
+        /// </summary>
+        /// <param name="o"><see cref="Sing"/></param>
+        /// <returns>Returns equivalent string</returns>
+        /// <exception cref="ArgumentOutOfRangeException"><see cref="Sing"/> not known</exception>
         public static string ToValue(Sing o)
         {
             switch (o)
@@ -37,6 +49,12 @@ namespace Characteristics.erp.Util
             }
         }
 
+        /// <summary>
+        /// Get value of <see cref="Options"/>
+        /// </summary>
+        /// <param name="o"><see cref="Options"/></param>
+        /// <returns>Returns equivalent string</returns>
+        /// <exception cref="ArgumentOutOfRangeException"><see cref="Options"/> not known</exception>
         public static string ToValue(Options o)
         {
             switch (o)
