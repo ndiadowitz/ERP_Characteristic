@@ -4,6 +4,7 @@ using System.Linq;
 using Characteristics.CharactersiticWSDL;
 using Characteristics.erp.Util;
 using Characteristics.Erp.@object;
+using Characteristics.Erp.Util;
 
 namespace Characteristics.erp
 {
@@ -15,6 +16,18 @@ namespace Characteristics.erp
         {
             _sapCharacteristic = new Z_HH_MT_CharacteristicClient();
             SetCredentials(_sapCharacteristic.ClientCredentials);
+        }
+
+        public BapiServiceTransactionCommitResponse CommitChanges()
+        {
+            BapiServiceTransactionCommit bstc = new BapiServiceTransactionCommit();
+            bstc.WAIT = " ";
+            return _sapCharacteristic.BapiServiceTransactionCommit(bstc);
+        }
+
+        public BapiServiceTransactionRollbackResponse RollbackChanges()
+        {
+            return _sapCharacteristic.BapiServiceTransactionRollback(new BapiServiceTransactionRollback());
         }
 
         /// <summary>
@@ -33,7 +46,7 @@ namespace Characteristics.erp
                 {
                     new Bapicharactrangetable
                     {
-                        Sign = Util.GetList.ToValue(sing), 
+                        Sign = Util.GetList.ToValue(sing),
                         Option = Util.GetList.ToValue(options),
                         Low = low,
                         High = high
@@ -43,7 +56,7 @@ namespace Characteristics.erp
 
             try
             {
-                var data =  _sapCharacteristic.CharacteristicGetList(getList);
+                var data = _sapCharacteristic.CharacteristicGetList(getList);
 
                 return data.CharactList.Select(bapicharactlist => new Characteristic(bapicharactlist)).ToList();
             }
@@ -95,6 +108,31 @@ namespace Characteristics.erp
             {
                 return null;
             }
+        }
+
+        public CharacteristicAddLongTextResponse AddLongText(Characteristic characteristic, LongTextHelper.Format format, string text)
+        {
+            Bapitline[] bapitline = new Bapitline[] {
+            new Bapitline() {
+                Tdline = text,
+                Tdformat = LongTextHelper.ToValue(format)}
+            };
+
+            var longText = new CharacteristicAddLongText()
+            {
+                CharactName = characteristic.Name,
+                LongText = bapitline
+            };
+            return _sapCharacteristic.CharacteristicAddLongText(longText);
+        }
+
+        public CharacteristicRemoveLongTextResponse RemoveLongText(Characteristic characteristic)
+        {
+            var longtext = new CharacteristicRemoveLongText()
+            {
+                CharactName = characteristic.Name
+            };
+            return _sapCharacteristic.CharacteristicRemoveLongText(longtext);
         }
     }
 }

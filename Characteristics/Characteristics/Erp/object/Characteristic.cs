@@ -33,8 +33,12 @@ namespace Characteristics.Erp.@object
         /// </summary>
         public string Name
         {
-            set => _name = value;
-            get => _name ?? Bapicharactlist.Charactname;
+            set { _name = value; }
+            get {
+                if(_name == null)
+                    return Bapicharactlist.Charactname;
+                return _name;
+            }
         }
     }
 }
