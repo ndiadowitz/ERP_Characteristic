@@ -61,6 +61,18 @@ namespace Characteristics
 
             var classListResponse = sapClass.GetList("001", GetList.Sing.Inclusive, GetList.Options.GreaterEqual, "0");
             Console.Out.WriteLine(classListResponse);
+
+            var classCreateResponse = sapClass.ClassCreate("001", "Neue_Klasse", "de-DE");
+            Console.Out.WriteLine(classCreateResponse);
+
+            var classGetDetailResponse = sapClass.ClassGetDetail("001", "Neue_Klasse");
+            Console.Out.WriteLine(classGetDetailResponse);
+
+            var classGetCharactetisticsResponse = sapClass.ClassGetCharacteristics("001");
+            Console.Out.WriteLine(classGetCharactetisticsResponse);
+
+            var classChangeResponse = sapClass.ClassChange();
+            Console.Out.WriteLine(classChangeResponse);
         }
     }
 }
