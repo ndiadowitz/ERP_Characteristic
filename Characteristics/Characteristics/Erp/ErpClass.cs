@@ -14,6 +14,18 @@ namespace Characteristics.erp
             SetCredentials(_sapClass.ClientCredentials);
         }
 
+        public BapiServiceTransactionCommitResponse CommitChanges()
+        {
+            BapiServiceTransactionCommit bstc = new BapiServiceTransactionCommit();
+            bstc.WAIT = " ";
+            return _sapClass.BapiServiceTransactionCommit(bstc);
+        }
+
+        public BapiServiceTransactionRollbackResponse RollbackChanges()
+        {
+            return _sapClass.BapiServiceTransactionRollback(new BapiServiceTransactionRollback());
+        }
+
         public ClassGetListResponse GetList(string classTypeNumber, GetList.Sing sing, GetList.Options options, string low, string high = "_")
         {
             var getList = new ClassGetList()
@@ -85,13 +97,14 @@ namespace Characteristics.erp
         }
 
         /// <summary>
-        /// ??? ###NICHT FERTIG!!!
+        /// ??? ###NICHT FERTIG???
         /// </summary>
-        public ClassGetCharacteristicsResponse ClassGetCharacteristics(string ClassType)
+        public ClassGetCharacteristicsResponse ClassGetCharacteristics(string ClassType, string ClassNum)
         {
             var Charact = new ClassGetCharacteristics()
             {
-                ClassType = ClassType
+                ClassType = ClassType,
+                ClassNum = ClassNum
             };
 
             try
@@ -105,13 +118,15 @@ namespace Characteristics.erp
         }
 
         /// <summary>
-        /// Change class information ###NICHT FERTIG!!!
+        /// Change class information ###NICHT FERTIG???
         /// </summary>
-        public ClassChangeResponse ClassChange()
+        public ClassChangeResponse ClassChange(string ClassType, string ClassNum, string Description, string LanguIso)
         {
             var Change = new ClassChange
             {
-                
+                ClassType = ClassType,
+                ClassNum = ClassNum,
+                ClassDescriptionsNew = new Bapi1003CatchNew[] {new Bapi1003CatchNew {Catchword = Description, LanguIso = LanguIso} }
             };
 
             try

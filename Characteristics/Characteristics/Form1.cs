@@ -68,11 +68,14 @@ namespace Characteristics
             var classGetDetailResponse = sapClass.ClassGetDetail("001", "Neue_Klasse");
             Console.Out.WriteLine(classGetDetailResponse);
 
-            var classGetCharactetisticsResponse = sapClass.ClassGetCharacteristics("001");
+            var classGetCharactetisticsResponse = sapClass.ClassGetCharacteristics("001", "Neue_Klasse");
             Console.Out.WriteLine(classGetCharactetisticsResponse);
 
-            var classChangeResponse = sapClass.ClassChange();
+            var classChangeResponse = sapClass.ClassChange("001", "Neue_Klasse", "Neue_Beschreibung", "de-DE");
             Console.Out.WriteLine(classChangeResponse);
+
+            var commitClass = sapClass.CommitChanges();
+            Console.Out.WriteLine(commitClass);
         }
     }
 }
