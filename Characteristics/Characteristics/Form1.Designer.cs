@@ -76,6 +76,7 @@
             this.charGetList.TabIndex = 2;
             this.charGetList.Text = "List elements";
             this.charGetList.UseVisualStyleBackColor = true;
+            this.charGetList.Click += new System.EventHandler(this.CharGetList_Click);
             // 
             // groupBox1
             // 

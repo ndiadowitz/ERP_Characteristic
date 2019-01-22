@@ -2,12 +2,15 @@
 using System.Windows.Forms;
 using Characteristics.erp;
 using Characteristics.erp.Util;
+using Characteristics.Erp.@object;
 using Characteristics.Erp.Util;
 
 namespace Characteristics
 {
     public partial class Form1 : Form
     {
+        ErpCharacteristics erpCharacteristics = null;
+
         public Form1()
         {
             InitializeComponent();
@@ -15,9 +18,10 @@ namespace Characteristics
             var connection = new ErpConnection("IDES-041", "1student");
 
 
-            var erpCharacteristics = new ErpCharacteristics(connection);
-
-            var characteristics = erpCharacteristics.GetList(GetList.Sing.Inclusive, GetList.Options.GreaterEqual, "0");
+            erpCharacteristics = new ErpCharacteristics(connection);
+            
+            var data = erpCharacteristics.GetList(GetList.Sing.Inclusive, GetList.Options.GreaterEqual, "0");
+            var characteristics = Characteristic.ConvertToList(data);
             Console.Out.WriteLine(characteristics);
 
             var rollback =  erpCharacteristics.RollbackChanges();
@@ -76,6 +80,22 @@ namespace Characteristics
 
             var commitClass = sapClass.CommitChanges();
             Console.Out.WriteLine(commitClass);
+            
+        }
+
+        private void CharGetList_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var data = erpCharacteristics.GetList(GetList.Sing.Inclusive, GetList.Options.GreaterEqual, "0");
+                var characteristics = Characteristic.ConvertToList(data);
+                charBox.DataSource = characteristics;
+            } catch (Exception ex)
+            {
+                transactionStatus.Text = ex.Message;
+                return;
+            }
+            
         }
     }
 }

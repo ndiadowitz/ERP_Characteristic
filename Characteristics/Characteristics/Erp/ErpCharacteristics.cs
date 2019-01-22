@@ -40,7 +40,7 @@ namespace Characteristics.erp
         /// <param name="low">Lower value</param>
         /// <param name="high">Upper value or '_' for empty</param>
         /// <returns>List of Characteristics or <code>null</code> on error</returns>
-        public List<Characteristic> GetList(GetList.Sing sing, GetList.Options options, string low, string high = "_")
+        public CharacteristicGetListResponse GetList(GetList.Sing sing, GetList.Options options, string low, string high = "_")
         {
             var getList = new CharacteristicGetList
             {
@@ -55,17 +55,8 @@ namespace Characteristics.erp
                     }
                 }
             };
-
-            try
-            {
-                var data = _sapCharacteristic.CharacteristicGetList(getList);
-
-                return data.CharactList.Select(bapicharactlist => new Characteristic(bapicharactlist)).ToList();
-            }
-            catch (Exception)
-            {
-                return null;
-            }
+            
+                return _sapCharacteristic.CharacteristicGetList(getList);
         }
 
         /// <summary>

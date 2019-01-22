@@ -1,4 +1,6 @@
 using Characteristics.CharactersiticWSDL;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Characteristics.Erp.@object
 {
@@ -115,6 +117,11 @@ namespace Characteristics.Erp.@object
         public string Description
         {
             set;get;
+        }
+
+        public static List<Characteristic> ConvertToList(CharacteristicGetListResponse data)
+        {
+            return data.CharactList.Select(bapicharactlist => new Characteristic(bapicharactlist)).ToList();
         }
     }
 }
