@@ -8,7 +8,7 @@ namespace Characteristics.Erp.@object
     /// <summary>
     /// Characteristic class for simpler working with <see cref="Bapiclasslist"/>.
     /// </summary>
-    public class Class
+    public class ClassMitK
     {
         /// <summary>
         /// Bapi object
@@ -19,7 +19,7 @@ namespace Characteristics.Erp.@object
         /// Default constructor
         /// </summary>
         /// <param name="bapiclasslist"><see cref="Bapiclasslist"/></param>
-        public Class(Bapiclasslist bapiclasslist)
+        public ClassMitK(Bapiclasslist bapiclasslist)
         {
             Bapiclasslist = bapiclasslist;
         }
@@ -45,15 +45,16 @@ namespace Characteristics.Erp.@object
         }
 
 
-        public static List<Class> ConvertToList(ClassGetListResponse data)
+        public static List<ClassMitK> ConvertToList(ClassGetListResponse data)
         {
-            return data.ClassList.Select(t => new Class(t)).ToList();
+            return data.ClassList.Select(t => new ClassMitK(t)).ToList();
         }
 
         public static string ConvertToString(ClassGetDetailResponse data)
         {
             var s = data.ClassStandard.StandardName;
             s += "\r\n" + data.ClassStandard.StandardNo;
+            s += "\r\n" + data.ClassBasicData.Classgroup;
 
             return s;
         }

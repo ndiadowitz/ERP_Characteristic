@@ -151,14 +151,10 @@ namespace Characteristics.erp
                     }
                 };
             }
-            try
-            {
+
                 return _sapCharacteristic.CharacteristicCreate(toCreate);
-            }
-            catch (Exception)
-            {
-                return null;
-            }
+            
+
         }
 
         public CharacteristicDeleteResponse DeleteCharacteristic(Characteristic characteristic)

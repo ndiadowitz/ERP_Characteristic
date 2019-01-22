@@ -189,8 +189,8 @@ namespace Characteristics
         {
             transactionStatus.Clear();
             try {
-                var data = erpClass.GetList("001", GetList.Sing.Inclusive, GetList.Options.GreaterEqual, "0");
-                var Class = data.ClassList;
+                var data = erpClass.GetList("001", GetList.Sign.Inclusive, GetList.Options.GreaterEqual, "0");
+                var Class = ClassMitK.ConvertToList(data);
                 classBox.DataSource = Class;
             }
             catch (Exception ex)
@@ -199,6 +199,51 @@ namespace Characteristics
             }
         }
 
-        
+        private void classGetDetail_Click(object sender, EventArgs e)
+        {
+            transactionStatus.Clear();
+            try
+            {
+                var element = classBox.SelectedItem;
+                if (element == null) return;
+                var detail = erpClass.GetDetail("001", ((ClassMitK)element).Name);
+                classDetail.Text = ClassMitK.ConvertToString(detail);
+            }
+            catch (Exception ex)
+            {
+                transactionStatus.Text = ex.Message;
+            }
+        }
+
+        private void CreateCharButton_Click(object sender, EventArgs e)
+        {
+            transactionStatus.Clear();
+            try
+            {
+                var element = erpCharacteristics.CreateCharacteristic(new Characteristic(CharNameBox.Text, "meow", Datatypes.Datatype.CHAR, "0", "0", "noe", "RELEASE"));
+                transactionStatus.Text = element.Return[1].Type + ": " + element.Return[1].Message;
+
+            }
+            catch (Exception ex)
+            {
+                transactionStatus.Text = ex.Message;
+            }
+        }
+
+        private void DeleteCharButton_Click(object sender, EventArgs e)
+        {
+            var element = charBox.SelectedItem;
+            if (element == null) return;
+            try
+            {
+                element = erpCharacteristics.DeleteCharacteristic((Characteristic)element);
+                transactionStatus.Text = "Element wure geloescht! \n Zum Aktualisieren List Elements druecken.";
+            }
+            catch (Exception ex)
+            {
+                transactionStatus.Text = ex.Message;
+            }
+
+        }
     }
 }

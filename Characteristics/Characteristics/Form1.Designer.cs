@@ -32,6 +32,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.charGetList = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.CharNameBox = new System.Windows.Forms.TextBox();
+            this.DeleteCharButton = new System.Windows.Forms.Button();
+            this.CreateCharButton = new System.Windows.Forms.Button();
             this.removeLongText = new System.Windows.Forms.Button();
             this.setLongText = new System.Windows.Forms.Button();
             this.setLongTextString = new System.Windows.Forms.TextBox();
@@ -81,6 +85,10 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.CharNameBox);
+            this.groupBox1.Controls.Add(this.DeleteCharButton);
+            this.groupBox1.Controls.Add(this.CreateCharButton);
             this.groupBox1.Controls.Add(this.removeLongText);
             this.groupBox1.Controls.Add(this.setLongText);
             this.groupBox1.Controls.Add(this.setLongTextString);
@@ -93,10 +101,46 @@
             this.groupBox1.Controls.Add(this.charBox);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(385, 327);
+            this.groupBox1.Size = new System.Drawing.Size(385, 419);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Characteristic";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 357);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(35, 13);
+            this.label4.TabIndex = 15;
+            this.label4.Text = "Name";
+            // 
+            // CharNameBox
+            // 
+            this.CharNameBox.Location = new System.Drawing.Point(47, 357);
+            this.CharNameBox.Name = "CharNameBox";
+            this.CharNameBox.Size = new System.Drawing.Size(204, 20);
+            this.CharNameBox.TabIndex = 14;
+            // 
+            // DeleteCharButton
+            // 
+            this.DeleteCharButton.Location = new System.Drawing.Point(6, 323);
+            this.DeleteCharButton.Name = "DeleteCharButton";
+            this.DeleteCharButton.Size = new System.Drawing.Size(75, 23);
+            this.DeleteCharButton.TabIndex = 13;
+            this.DeleteCharButton.Text = "Delete";
+            this.DeleteCharButton.UseVisualStyleBackColor = true;
+            this.DeleteCharButton.Click += new System.EventHandler(this.DeleteCharButton_Click);
+            // 
+            // CreateCharButton
+            // 
+            this.CreateCharButton.Location = new System.Drawing.Point(271, 357);
+            this.CreateCharButton.Name = "CreateCharButton";
+            this.CreateCharButton.Size = new System.Drawing.Size(75, 23);
+            this.CreateCharButton.TabIndex = 12;
+            this.CreateCharButton.Text = "Create";
+            this.CreateCharButton.UseVisualStyleBackColor = true;
+            this.CreateCharButton.Click += new System.EventHandler(this.CreateCharButton_Click);
             // 
             // removeLongText
             // 
@@ -174,7 +218,7 @@
             this.groupBox2.Controls.Add(this.classGetList);
             this.groupBox2.Location = new System.Drawing.Point(403, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(385, 327);
+            this.groupBox2.Size = new System.Drawing.Size(414, 327);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Class";
@@ -197,6 +241,7 @@
             this.classGetDetail.TabIndex = 3;
             this.classGetDetail.Text = "Get Detail";
             this.classGetDetail.UseVisualStyleBackColor = true;
+            this.classGetDetail.Click += new System.EventHandler(this.classGetDetail_Click);
             // 
             // label2
             // 
@@ -227,7 +272,7 @@
             // 
             // transactionStatus
             // 
-            this.transactionStatus.Location = new System.Drawing.Point(12, 362);
+            this.transactionStatus.Location = new System.Drawing.Point(12, 476);
             this.transactionStatus.Multiline = true;
             this.transactionStatus.Name = "transactionStatus";
             this.transactionStatus.ScrollBars = System.Windows.Forms.ScrollBars.Both;
@@ -237,7 +282,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 346);
+            this.label3.Location = new System.Drawing.Point(9, 460);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(100, 13);
             this.label3.TabIndex = 11;
@@ -247,7 +292,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(994, 564);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.transactionStatus);
@@ -284,6 +329,10 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox transactionStatus;
         private System.Windows.Forms.Button removeLongText;
+        private System.Windows.Forms.Button DeleteCharButton;
+        private System.Windows.Forms.Button CreateCharButton;
+        private System.Windows.Forms.TextBox CharNameBox;
+        private System.Windows.Forms.Label label4;
     }
 }
 
