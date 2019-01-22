@@ -223,6 +223,7 @@
             this.classGetList.TabIndex = 0;
             this.classGetList.Text = "List elements";
             this.classGetList.UseVisualStyleBackColor = true;
+            this.classGetList.Click += new System.EventHandler(this.classGetList_Click);
             // 
             // transactionStatus
             // 

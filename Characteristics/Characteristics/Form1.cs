@@ -11,6 +11,7 @@ namespace Characteristics
     public partial class Form1 : Form
     {
         ErpCharacteristics erpCharacteristics = null;
+        ErpClass erpClass = null;
 
         public Form1()
         {
@@ -20,6 +21,7 @@ namespace Characteristics
 
 
             erpCharacteristics = new ErpCharacteristics(connection);
+            erpClass = new ErpClass(connection);
 
             Disposed += Form1_Disposed;
 
@@ -182,5 +184,21 @@ namespace Characteristics
                 transactionStatus.Text = ex.Message;
             }
         }
+
+        private void classGetList_Click(object sender, EventArgs e)
+        {
+            transactionStatus.Clear();
+            try {
+                var data = erpClass.GetList("001", GetList.Sing.Inclusive, GetList.Options.GreaterEqual, "0");
+                var Class = data.ClassList;
+                classBox.DataSource = Class;
+            }
+            catch (Exception ex)
+            {
+                transactionStatus.Text = ex.Message;
+            }
+        }
+
+        
     }
 }
