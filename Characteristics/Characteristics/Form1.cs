@@ -4,7 +4,6 @@ using Characteristics.erp;
 using Characteristics.erp.Util;
 using Characteristics.Erp.@object;
 using Characteristics.Erp.Util;
-using Characteristics.Erp.@object;
 
 namespace Characteristics
 {
@@ -25,81 +24,20 @@ namespace Characteristics
 
             Disposed += Form1_Disposed;
 
-            /*
-            var data = erpCharacteristics.GetList(GetList.Sing.Inclusive, GetList.Options.GreaterEqual, "0");
-            var characteristics = Characteristic.ConvertToList(data);
-            Console.Out.WriteLine(characteristics);
-
-            var rollback =  erpCharacteristics.RollbackChanges();
-            Console.Out.WriteLine(rollback);
-
-            var characteristic = new Characteristic("Fisch","blubb", Datatypes.Datatype.CHAR, "0", "0", "a fish says blubb", "RELEASE");
-            var create = erpCharacteristics.CreateCharacteristic(characteristic);
-            Console.Out.WriteLine(create);
-
-            var commit = erpCharacteristics.CommitChanges();
-            Console.Out.WriteLine(commit);
-
-
-            var detail = erpCharacteristics.GetDetail(characteristics[364]);
-            Console.Out.WriteLine(detail);
-
-            var longText = erpCharacteristics.GetLongText(characteristics[364]);
-            Console.Out.WriteLine(longText);
-
-
-
-            var testlong = erpCharacteristics.GetLongText(characteristics[3]);
-            Console.Out.WriteLine(testlong);
-
-            var addlongtext = erpCharacteristics.AddLongText(characteristics[3], LongTextHelper.Format.Default, "Hallo");
-            Console.Out.WriteLine(addlongtext);
-
-            commit = erpCharacteristics.CommitChanges();
-            Console.Out.WriteLine(commit);
-
-            testlong = erpCharacteristics.GetLongText(characteristics[3]);
-            Console.Out.WriteLine(testlong);
-
-            var removelongtext = erpCharacteristics.RemoveLongText(characteristics[3]);
-            Console.Out.WriteLine(removelongtext);
-
-            commit = erpCharacteristics.CommitChanges();
-            Console.Out.WriteLine(commit);
-
-            testlong = erpCharacteristics.GetLongText(characteristics[3]);
-            Console.Out.WriteLine(testlong);
-
-
-            
-
-
-            var sapClass = new ErpClass(connection);
-
-            var classListResponse = sapClass.GetList("001", GetList.Sing.Inclusive, GetList.Options.GreaterEqual, "0");
-            Console.Out.WriteLine(classListResponse);
-
-            var classCreateResponse = sapClass.Create("001", "1000000", "DE", "neu");
-            Console.Out.WriteLine(classCreateResponse);
-
-            var classGetDetailResponse = sapClass.GetDetail("001", "1000000");
-            Console.Out.WriteLine(classGetDetailResponse);
-
-            var classGetCharactetisticsResponse = sapClass.GetCharacteristics("001", "1000000");
-            Console.Out.WriteLine(classGetCharactetisticsResponse);
-
-            var classChangeResponse = sapClass.Change("001", "1000000", "neu", "DE", "Neue_Beschreibung", "DE");
-            Console.Out.WriteLine(classChangeResponse);
-
-            var commitClass = sapClass.CommitChanges();
-            Console.Out.WriteLine(commitClass);
-            */
         }
 
         private void Form1_Disposed(object sender, EventArgs e)
         {
             if (erpCharacteristics != null)
+            {
+                erpCharacteristics.RollbackChanges();
                 erpCharacteristics.Close();
+            }
+            if (erpClass != null)
+            {
+                erpClass.RollbackChanges();
+                erpClass.Close();
+            }
         }
 
         private void CharGetList_Click(object sender, EventArgs e)
@@ -220,8 +158,8 @@ namespace Characteristics
             transactionStatus.Clear();
             try
             {
-                var element = erpCharacteristics.CreateCharacteristic(new Characteristic(CharNameBox.Text, "meow", Datatypes.Datatype.CHAR, "0", "0", "noe", "RELEASE"));
-                transactionStatus.Text = element.Return[1].Type + ": " + element.Return[1].Message;
+                var data = erpCharacteristics.CreateCharacteristic(new Characteristic(CharNameBox.Text, "meow", Datatypes.Datatype.CHAR, "0", "0", "noe", "RELEASE"));
+                transactionStatus.Text = data.Return[1].Type + ": " + data.Return[1].Message;
 
             }
             catch (Exception ex)
@@ -232,18 +170,79 @@ namespace Characteristics
 
         private void DeleteCharButton_Click(object sender, EventArgs e)
         {
+            transactionStatus.Clear();
+
             var element = charBox.SelectedItem;
             if (element == null) return;
             try
             {
-                element = erpCharacteristics.DeleteCharacteristic((Characteristic)element);
-                transactionStatus.Text = "Element wure geloescht! \n Zum Aktualisieren List Elements druecken.";
+                var data = erpCharacteristics.DeleteCharacteristic((Characteristic)element);
+                transactionStatus.Text = data.Return[1].Type + ": " + data.Return[1].Message;
             }
             catch (Exception ex)
             {
                 transactionStatus.Text = ex.Message;
             }
 
+        }
+
+        private void CreateClassButton_Click(object sender, EventArgs e)
+        {
+            transactionStatus.Clear();
+
+            if (ClassNameTextBox.Text.Length == 0) return;
+
+            try
+            {
+                var data = erpClass.Create("001", ClassNameTextBox.Text, "DE", "noe");
+                transactionStatus.Text = data.Return[1].Type + ": " + data.Return[1].Message;
+            }
+            catch (Exception ex)
+            {
+                transactionStatus.Text = ex.Message;
+            }
+                  
+        }
+
+        private void ChangeClassButton_Click(object sender, EventArgs e)
+        {
+            transactionStatus.Clear();
+            
+            try
+            {
+                if (changeClassString.Text.Length == 0) return;
+                var element = classBox.SelectedItem;
+                if (element == null) return;
+
+                var classMitK = (ClassMitK)element;
+                var detail = erpClass.GetDetail("001", classMitK.Name);
+
+                var data = erpClass.Change("001", classMitK.Name, detail.ClassDescriptions[0].Catchword, detail.ClassDescriptions[0].LanguIso, changeClassString.Text, "DE");
+                transactionStatus.Text = data.Return[1].Type + ": " + data.Return[1].Message;
+            }
+            catch (Exception ex)
+            {
+                transactionStatus.Text = ex.Message;
+            }
+        }
+
+        private void DeleteClassButton_Click(object sender, EventArgs e)
+        {
+            transactionStatus.Clear();
+
+            try
+            {
+                var element = classBox.SelectedItem;
+                if (element == null) return;
+
+                var data = erpClass.Delete("001", ((ClassMitK)element).Name);
+                transactionStatus.Text = data.Return[1].Type + ": " + data.Return[1].Message;
+
+            }
+            catch (Exception ex)
+            {
+                transactionStatus.Text = ex.Message;
+            }
         }
     }
 }

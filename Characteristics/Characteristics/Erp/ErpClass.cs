@@ -28,6 +28,11 @@ namespace Characteristics.erp
             return _sapClass.BapiServiceTransactionRollback(new BapiServiceTransactionRollback());
         }
 
+        public void Close()
+        {
+            _sapClass.Close();
+        }
+
         public ClassGetListResponse GetList(string classTypeNumber, GetList.Sign sign, GetList.Options options, string low, string high = "_")
         {
             var getList = new ClassGetList()
@@ -45,14 +50,7 @@ namespace Characteristics.erp
                 Classtype_Imp = classTypeNumber
             };
 
-            try
-            {
                 return _sapClass.ClassGetList(getList);
-            }
-            catch (Exception)
-            {
-                return null;
-            }
         }
 
         /// <summary>
@@ -71,15 +69,7 @@ namespace Characteristics.erp
                 ClassNumNew = ClassNum,
                 ClassDescriptions = new Bapi1003Catch[] { new Bapi1003Catch() {LanguIso = LanguIso, Catchword = Description} }
             };
-
-            try
-            {
                 return _sapClass.ClassCreate(NeueKlasse);
-            }
-            catch(Exception)
-            {
-                return null;
-            }
         }
 
         /// <summary>
@@ -96,14 +86,8 @@ namespace Characteristics.erp
                 ClassNum = ClassNum
             };
 
-            try
-            {
                 return _sapClass.ClassGetDetail(Detail);
-            }
-            catch(Exception)
-            {
-                return null;
-            }
+
         }
 
         /// <summary>
@@ -119,15 +103,7 @@ namespace Characteristics.erp
                 ClassType = ClassType,
                 ClassNum = ClassNum
             };
-
-            try
-            {
                 return _sapClass.ClassGetCharacteristics(Charact);
-            }
-            catch(Exception)
-            {
-                return null;
-            }
         }
 
         /// <summary>
@@ -150,14 +126,7 @@ namespace Characteristics.erp
                 ClassDescriptionsNew = new Bapi1003CatchNew[] {new Bapi1003CatchNew {Catchword = DescriptionNew, LanguIso = LanguIsoNew} },
             };
 
-            try
-            {
                 return _sapClass.ClassChange(Change);
-            }
-            catch (Exception)
-            {
-                return null;
-            }
         }
 
         /// <summary>
@@ -173,15 +142,7 @@ namespace Characteristics.erp
                 ClassType = ClassType,
                 ClassNum = ClassNum
             };
-
-            try
-            {
                 return _sapClass.ClassDelete(Delete);
-            }
-            catch(Exception)
-            {
-                return null;
-            }
         }
     }
 }

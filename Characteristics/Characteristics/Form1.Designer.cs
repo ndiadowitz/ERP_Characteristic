@@ -51,6 +51,13 @@
             this.classGetList = new System.Windows.Forms.Button();
             this.transactionStatus = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.CreateClassButton = new System.Windows.Forms.Button();
+            this.ChangeClassButton = new System.Windows.Forms.Button();
+            this.DeleteClassButton = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.ClassNameTextBox = new System.Windows.Forms.TextBox();
+            this.changeClassString = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -134,9 +141,9 @@
             // 
             // CreateCharButton
             // 
-            this.CreateCharButton.Location = new System.Drawing.Point(271, 357);
+            this.CreateCharButton.Location = new System.Drawing.Point(257, 357);
             this.CreateCharButton.Name = "CreateCharButton";
-            this.CreateCharButton.Size = new System.Drawing.Size(75, 23);
+            this.CreateCharButton.Size = new System.Drawing.Size(122, 23);
             this.CreateCharButton.TabIndex = 12;
             this.CreateCharButton.Text = "Create";
             this.CreateCharButton.UseVisualStyleBackColor = true;
@@ -211,6 +218,13 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Controls.Add(this.changeClassString);
+            this.groupBox2.Controls.Add(this.ClassNameTextBox);
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.DeleteClassButton);
+            this.groupBox2.Controls.Add(this.ChangeClassButton);
+            this.groupBox2.Controls.Add(this.CreateClassButton);
             this.groupBox2.Controls.Add(this.classDetail);
             this.groupBox2.Controls.Add(this.classGetDetail);
             this.groupBox2.Controls.Add(this.label2);
@@ -218,7 +232,7 @@
             this.groupBox2.Controls.Add(this.classGetList);
             this.groupBox2.Location = new System.Drawing.Point(403, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(414, 327);
+            this.groupBox2.Size = new System.Drawing.Size(385, 327);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Class";
@@ -288,11 +302,73 @@
             this.label3.TabIndex = 11;
             this.label3.Text = "Transanction status";
             // 
+            // CreateClassButton
+            // 
+            this.CreateClassButton.Location = new System.Drawing.Point(257, 271);
+            this.CreateClassButton.Name = "CreateClassButton";
+            this.CreateClassButton.Size = new System.Drawing.Size(122, 23);
+            this.CreateClassButton.TabIndex = 5;
+            this.CreateClassButton.Text = "Create";
+            this.CreateClassButton.UseVisualStyleBackColor = true;
+            this.CreateClassButton.Click += new System.EventHandler(this.CreateClassButton_Click);
+            // 
+            // ChangeClassButton
+            // 
+            this.ChangeClassButton.Location = new System.Drawing.Point(257, 300);
+            this.ChangeClassButton.Name = "ChangeClassButton";
+            this.ChangeClassButton.Size = new System.Drawing.Size(122, 23);
+            this.ChangeClassButton.TabIndex = 6;
+            this.ChangeClassButton.Text = "Change";
+            this.ChangeClassButton.UseVisualStyleBackColor = true;
+            this.ChangeClassButton.Click += new System.EventHandler(this.ChangeClassButton_Click);
+            // 
+            // DeleteClassButton
+            // 
+            this.DeleteClassButton.Location = new System.Drawing.Point(6, 236);
+            this.DeleteClassButton.Name = "DeleteClassButton";
+            this.DeleteClassButton.Size = new System.Drawing.Size(75, 23);
+            this.DeleteClassButton.TabIndex = 7;
+            this.DeleteClassButton.Text = "Delete";
+            this.DeleteClassButton.UseVisualStyleBackColor = true;
+            this.DeleteClassButton.Click += new System.EventHandler(this.DeleteClassButton_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 276);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(35, 13);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "Name";
+            // 
+            // ClassNameTextBox
+            // 
+            this.ClassNameTextBox.Location = new System.Drawing.Point(72, 273);
+            this.ClassNameTextBox.Name = "ClassNameTextBox";
+            this.ClassNameTextBox.Size = new System.Drawing.Size(179, 20);
+            this.ClassNameTextBox.TabIndex = 9;
+            // 
+            // changeClassString
+            // 
+            this.changeClassString.Location = new System.Drawing.Point(72, 299);
+            this.changeClassString.Name = "changeClassString";
+            this.changeClassString.Size = new System.Drawing.Size(179, 20);
+            this.changeClassString.TabIndex = 10;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 302);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(60, 13);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "Description";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(994, 564);
+            this.ClientSize = new System.Drawing.Size(796, 564);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.transactionStatus);
@@ -333,6 +409,13 @@
         private System.Windows.Forms.Button CreateCharButton;
         private System.Windows.Forms.TextBox CharNameBox;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox ClassNameTextBox;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button DeleteClassButton;
+        private System.Windows.Forms.Button ChangeClassButton;
+        private System.Windows.Forms.Button CreateClassButton;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox changeClassString;
     }
 }
 
