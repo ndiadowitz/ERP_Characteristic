@@ -20,8 +20,10 @@ namespace Characteristics.erp
 
         public BapiServiceTransactionCommitResponse CommitChanges()
         {
-            BapiServiceTransactionCommit bstc = new BapiServiceTransactionCommit();
-            bstc.WAIT = " ";
+            var bstc = new BapiServiceTransactionCommit
+            {
+                WAIT = " "
+            };
             return _sapCharacteristic.BapiServiceTransactionCommit(bstc);
         }
 

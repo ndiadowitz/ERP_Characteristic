@@ -21,6 +21,15 @@ namespace Characteristics.Erp.@object
             Bapicharactlist = bapicharactlist;
         }
 
+        public Characteristic(string name, string dataType, string length, string decimals, string description)
+        {
+            _name = name;
+            _dataType = dataType;
+            _length = length;
+            _decimals = decimals;
+            Description = description;
+        }
+
         /// <summary>
         /// Name of Bapi object
         /// Used by <see cref="Name"/>
