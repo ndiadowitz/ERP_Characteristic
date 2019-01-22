@@ -54,15 +54,20 @@ namespace Characteristics.erp
         }
 
         /// <summary>
-        /// Create new class ###NICHT FERTIG???
+        /// Create new class
         /// </summary>
-        public ClassCreateResponse ClassCreate(string ClassType, string ClassNum, string LanguIso)
+        /// <param name="ClassType">Type of Class</param>
+        /// <param name="ClassNum">Class name</param>
+        /// <param name="LangiIso">Iso language representation</param>
+        /// <param name="Description">Class description</param>
+        /// <returns>Success message or <code>null</code> on error</returns>
+        public ClassCreateResponse Create(string ClassType, string ClassNum, string LanguIso, string Description)
         {
             var NeueKlasse = new ClassCreate()
             {
                 ClassTypeNew = ClassType,
                 ClassNumNew = ClassNum,
-                ClassDescriptions = new Bapi1003Catch[] { new Bapi1003Catch() {LanguIso = LanguIso} }
+                ClassDescriptions = new Bapi1003Catch[] { new Bapi1003Catch() {LanguIso = LanguIso, Catchword = Description} }
             };
 
             try
@@ -76,9 +81,12 @@ namespace Characteristics.erp
         }
 
         /// <summary>
-        /// Get detailed info of specified class ###NICHT FERTIG???
+        /// Get detailed info of specified class
         /// </summary>
-        public ClassGetDetailResponse ClassGetDetail(string ClassType, string ClassNum)
+        /// <param name="ClassType">Type of Class</param>
+        /// <param name="ClassNum">Class name</param>
+        /// <returns>Detailed information of a specified Class or <code>null</code> on error</returns>
+        public ClassGetDetailResponse GetDetail(string ClassType, string ClassNum)
         {
             var Detail = new ClassGetDetail()
             {
@@ -97,9 +105,12 @@ namespace Characteristics.erp
         }
 
         /// <summary>
-        /// ??? ###NICHT FERTIG???
+        /// Get Class information about Characteristics
         /// </summary>
-        public ClassGetCharacteristicsResponse ClassGetCharacteristics(string ClassType, string ClassNum)
+        /// <param name="ClassType">Type of Class</param>
+        /// <param name="ClassNum">Class name</param>
+        /// <returns>Characteristic of a specified Class or <code>null</code> on error</returns>
+        public ClassGetCharacteristicsResponse GetCharacteristics(string ClassType, string ClassNum)
         {
             var Charact = new ClassGetCharacteristics()
             {
@@ -118,15 +129,23 @@ namespace Characteristics.erp
         }
 
         /// <summary>
-        /// Change class information ###NICHT FERTIG???
+        /// Change class information(description only)
         /// </summary>
-        public ClassChangeResponse ClassChange(string ClassType, string ClassNum, string Description, string LanguIso)
+        /// <param name="ClassType">Type of Class</param>
+        /// <param name="ClassNum">Class name</param>
+        /// <param name="Description">Old description from Class</param>
+        /// <param name="LanguIso">Old Iso language representation from Class</param>
+        /// <param name="DescriptionNew">New description of Class</param>
+        /// <param name="LanguIsoNew">New Iso language representation of Class</param>
+        /// <returns>Success message or <code>null</code> on error</returns>
+        public ClassChangeResponse Change(string ClassType, string ClassNum, string Description, string LanguIso, string DescriptionNew, string LanguIsoNew)
         {
             var Change = new ClassChange
             {
                 ClassType = ClassType,
                 ClassNum = ClassNum,
-                ClassDescriptionsNew = new Bapi1003CatchNew[] {new Bapi1003CatchNew {Catchword = Description, LanguIso = LanguIso} }
+                ClassDescriptions = new Bapi1003Catch[] {new Bapi1003Catch { Catchword = Description, LanguIso = LanguIso} },
+                ClassDescriptionsNew = new Bapi1003CatchNew[] {new Bapi1003CatchNew {Catchword = DescriptionNew, LanguIso = LanguIsoNew} },
             };
 
             try
@@ -134,6 +153,30 @@ namespace Characteristics.erp
                 return _sapClass.ClassChange(Change);
             }
             catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Delete specified Class
+        /// </summary>
+        /// <param name="ClassType">Type of Class</param>
+        /// <param name="ClassNum">Class name</param>
+        /// <returns>Success message or <code>null</code> on error</returns>
+        public ClassDeleteResponse Delete(string ClassType, string ClassNum)
+        {
+            var Delete = new ClassDelete
+            {
+                ClassType = ClassType,
+                ClassNum = ClassNum
+            };
+
+            try
+            {
+                return _sapClass.ClassDelete(Delete);
+            }
+            catch(Exception)
             {
                 return null;
             }
