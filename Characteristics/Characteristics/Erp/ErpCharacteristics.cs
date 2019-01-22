@@ -30,6 +30,11 @@ namespace Characteristics.erp
             return _sapCharacteristic.BapiServiceTransactionRollback(new BapiServiceTransactionRollback());
         }
 
+        public void Close()
+        {
+            _sapCharacteristic.Close();
+        }
+
         /// <summary>
         /// Simple search for Characteristic objects
         /// </summary>
@@ -69,14 +74,7 @@ namespace Characteristics.erp
                 CharactName = characteristic.Name
             };
 
-            try
-            {
-                return _sapCharacteristic.CharacteristicGetDetail(detail);
-            }
-            catch (Exception)
-            {
-                return null;
-            }
+            return _sapCharacteristic.CharacteristicGetDetail(detail);
         }
 
         /// <summary>
@@ -91,14 +89,7 @@ namespace Characteristics.erp
                 CharactName = characteristic.Name
             };
 
-            try
-            {
-                return _sapCharacteristic.CharacteristicGetLongText(longText);
-            }
-            catch (Exception)
-            {
-                return null;
-            }
+            return _sapCharacteristic.CharacteristicGetLongText(longText);
         }
 
         public CharacteristicAddLongTextResponse AddLongText(Characteristic characteristic, LongTextHelper.Format format, string text)

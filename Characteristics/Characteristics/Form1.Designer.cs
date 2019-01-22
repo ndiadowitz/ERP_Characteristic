@@ -32,6 +32,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.charGetList = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.removeLongText = new System.Windows.Forms.Button();
+            this.setLongText = new System.Windows.Forms.Button();
+            this.setLongTextString = new System.Windows.Forms.TextBox();
+            this.getLongTextString = new System.Windows.Forms.TextBox();
+            this.getLongText = new System.Windows.Forms.Button();
             this.charDetail = new System.Windows.Forms.TextBox();
             this.charGetDetail = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -40,11 +45,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.classBox = new System.Windows.Forms.ListBox();
             this.classGetList = new System.Windows.Forms.Button();
-            this.getLongText = new System.Windows.Forms.Button();
-            this.getLongTextString = new System.Windows.Forms.TextBox();
-            this.setLongTextString = new System.Windows.Forms.TextBox();
-            this.setLongText = new System.Windows.Forms.Button();
-            this.removeLongText = new System.Windows.Forms.Button();
             this.transactionStatus = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
@@ -70,6 +70,7 @@
             // 
             // charGetList
             // 
+            this.charGetList.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.charGetList.Location = new System.Drawing.Point(6, 19);
             this.charGetList.Name = "charGetList";
             this.charGetList.Size = new System.Drawing.Size(122, 23);
@@ -97,6 +98,52 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Characteristic";
             // 
+            // removeLongText
+            // 
+            this.removeLongText.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.removeLongText.Location = new System.Drawing.Point(6, 294);
+            this.removeLongText.Name = "removeLongText";
+            this.removeLongText.Size = new System.Drawing.Size(373, 23);
+            this.removeLongText.TabIndex = 9;
+            this.removeLongText.Text = "Remove Longtext";
+            this.removeLongText.UseVisualStyleBackColor = true;
+            this.removeLongText.Click += new System.EventHandler(this.removeLongText_Click);
+            // 
+            // setLongText
+            // 
+            this.setLongText.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.setLongText.Location = new System.Drawing.Point(257, 266);
+            this.setLongText.Name = "setLongText";
+            this.setLongText.Size = new System.Drawing.Size(122, 23);
+            this.setLongText.TabIndex = 8;
+            this.setLongText.Text = "Set Longtext";
+            this.setLongText.UseVisualStyleBackColor = true;
+            this.setLongText.Click += new System.EventHandler(this.setLongText_Click);
+            // 
+            // setLongTextString
+            // 
+            this.setLongTextString.Location = new System.Drawing.Point(6, 268);
+            this.setLongTextString.Name = "setLongTextString";
+            this.setLongTextString.Size = new System.Drawing.Size(245, 20);
+            this.setLongTextString.TabIndex = 7;
+            // 
+            // getLongTextString
+            // 
+            this.getLongTextString.Location = new System.Drawing.Point(134, 239);
+            this.getLongTextString.Name = "getLongTextString";
+            this.getLongTextString.Size = new System.Drawing.Size(245, 20);
+            this.getLongTextString.TabIndex = 6;
+            // 
+            // getLongText
+            // 
+            this.getLongText.Location = new System.Drawing.Point(6, 237);
+            this.getLongText.Name = "getLongText";
+            this.getLongText.Size = new System.Drawing.Size(122, 23);
+            this.getLongText.TabIndex = 5;
+            this.getLongText.Text = "Get Longtext";
+            this.getLongText.UseVisualStyleBackColor = true;
+            this.getLongText.Click += new System.EventHandler(this.getLongText_Click);
+            // 
             // charDetail
             // 
             this.charDetail.Location = new System.Drawing.Point(6, 81);
@@ -105,15 +152,18 @@
             this.charDetail.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.charDetail.Size = new System.Drawing.Size(122, 150);
             this.charDetail.TabIndex = 4;
+            this.charDetail.WordWrap = false;
             // 
             // charGetDetail
             // 
+            this.charGetDetail.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.charGetDetail.Location = new System.Drawing.Point(6, 52);
             this.charGetDetail.Name = "charGetDetail";
             this.charGetDetail.Size = new System.Drawing.Size(122, 23);
             this.charGetDetail.TabIndex = 3;
             this.charGetDetail.Text = "Get Detail ";
             this.charGetDetail.UseVisualStyleBackColor = true;
+            this.charGetDetail.Click += new System.EventHandler(this.charGetDetail_Click);
             // 
             // groupBox2
             // 
@@ -137,6 +187,7 @@
             this.classDetail.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.classDetail.Size = new System.Drawing.Size(137, 150);
             this.classDetail.TabIndex = 4;
+            this.classDetail.WordWrap = false;
             // 
             // classGetDetail
             // 
@@ -172,47 +223,6 @@
             this.classGetList.TabIndex = 0;
             this.classGetList.Text = "List elements";
             this.classGetList.UseVisualStyleBackColor = true;
-            // 
-            // getLongText
-            // 
-            this.getLongText.Location = new System.Drawing.Point(6, 237);
-            this.getLongText.Name = "getLongText";
-            this.getLongText.Size = new System.Drawing.Size(122, 23);
-            this.getLongText.TabIndex = 5;
-            this.getLongText.Text = "Get Longtext";
-            this.getLongText.UseVisualStyleBackColor = true;
-            // 
-            // getLongTextString
-            // 
-            this.getLongTextString.Location = new System.Drawing.Point(134, 239);
-            this.getLongTextString.Name = "getLongTextString";
-            this.getLongTextString.Size = new System.Drawing.Size(245, 20);
-            this.getLongTextString.TabIndex = 6;
-            // 
-            // setLongTextString
-            // 
-            this.setLongTextString.Location = new System.Drawing.Point(6, 268);
-            this.setLongTextString.Name = "setLongTextString";
-            this.setLongTextString.Size = new System.Drawing.Size(245, 20);
-            this.setLongTextString.TabIndex = 7;
-            // 
-            // setLongText
-            // 
-            this.setLongText.Location = new System.Drawing.Point(257, 266);
-            this.setLongText.Name = "setLongText";
-            this.setLongText.Size = new System.Drawing.Size(122, 23);
-            this.setLongText.TabIndex = 8;
-            this.setLongText.Text = "Set Longtext";
-            this.setLongText.UseVisualStyleBackColor = true;
-            // 
-            // removeLongText
-            // 
-            this.removeLongText.Location = new System.Drawing.Point(6, 294);
-            this.removeLongText.Name = "removeLongText";
-            this.removeLongText.Size = new System.Drawing.Size(373, 23);
-            this.removeLongText.TabIndex = 9;
-            this.removeLongText.Text = "Remove Longtext";
-            this.removeLongText.UseVisualStyleBackColor = true;
             // 
             // transactionStatus
             // 

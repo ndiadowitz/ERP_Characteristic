@@ -161,5 +161,18 @@ namespace Characteristics.Erp.@object
         {
             return data.CharactList.Select(bapicharactlist => new Characteristic(bapicharactlist)).ToList();
         }
+
+        public static string ConvertToString(CharacteristicGetDetailResponse data)
+        {
+            string s = data.CharactDetail.CharactName;
+            s += "\r\n" + data.CharactDetail.DataType;
+
+            return s;
+        }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

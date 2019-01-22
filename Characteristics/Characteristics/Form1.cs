@@ -20,7 +20,10 @@ namespace Characteristics
 
 
             erpCharacteristics = new ErpCharacteristics(connection);
-            
+
+            Disposed += Form1_Disposed;
+
+            /*
             var data = erpCharacteristics.GetList(GetList.Sing.Inclusive, GetList.Options.GreaterEqual, "0");
             var characteristics = Characteristic.ConvertToList(data);
             Console.Out.WriteLine(characteristics);
@@ -88,11 +91,18 @@ namespace Characteristics
 
             var commitClass = sapClass.CommitChanges();
             Console.Out.WriteLine(commitClass);
-            
+            */
+        }
+
+        private void Form1_Disposed(object sender, EventArgs e)
+        {
+            if (erpCharacteristics != null)
+                erpCharacteristics.Close();
         }
 
         private void CharGetList_Click(object sender, EventArgs e)
         {
+            transactionStatus.Clear();
             try
             {
                 var data = erpCharacteristics.GetList(GetList.Sing.Inclusive, GetList.Options.GreaterEqual, "0");
@@ -101,9 +111,76 @@ namespace Characteristics
             } catch (Exception ex)
             {
                 transactionStatus.Text = ex.Message;
-                return;
             }
-            
+        }
+
+        private void charGetDetail_Click(object sender, EventArgs e)
+        {
+            transactionStatus.Clear();
+            try
+            {
+                var element = charBox.SelectedItem;
+                if (element == null) return;
+                var detail = erpCharacteristics.GetDetail((Characteristic)element);
+                charDetail.Text = Characteristic.ConvertToString(detail);
+            } catch (Exception ex)
+            {
+                transactionStatus.Text = ex.Message;
+            }
+        }
+
+        private void getLongText_Click(object sender, EventArgs e)
+        {
+            transactionStatus.Clear();
+            try
+            {
+                var element = charBox.SelectedItem;
+                if (element == null) return;
+                var text = erpCharacteristics.GetLongText((Characteristic)element);
+                if (text.LongText.Length == 0)
+                {
+                    transactionStatus.Text = "No longtext avaiable.";
+                    return;
+                }
+                getLongTextString.Text = text.LongText[0].Tdline;
+
+                transactionStatus.Text = text.LongText[0].Tdline;
+                for (int i = 1; i < text.LongText.Length; ++i)
+                    transactionStatus.Text += "\r\n" + text.LongText[i].Tdline;
+            } catch(Exception ex)
+            {
+                transactionStatus.Text = ex.Message;
+            }
+        }
+
+        private void setLongText_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (setLongTextString.Text.Length == 0) return;
+                var element = charBox.SelectedItem;
+                if (element == null) return;
+                var data = erpCharacteristics.AddLongText((Characteristic)element, LongTextHelper.Format.Default, setLongTextString.Text);
+                transactionStatus.Text = data.Return[1].Type + ": " + data.Return[1].Message;
+                setLongTextString.Clear();
+            } catch (Exception ex)
+            {
+                transactionStatus.Text = ex.Message;
+            }
+        }
+
+        private void removeLongText_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var element = charBox.SelectedItem;
+                if (element == null) return;
+                var data = erpCharacteristics.RemoveLongText((Characteristic)element);
+                transactionStatus.Text = data.Return[1].Type + ": " + data.Return[1].Message;
+            } catch (Exception ex)
+            {
+                transactionStatus.Text = ex.Message;
+            }
         }
     }
 }
