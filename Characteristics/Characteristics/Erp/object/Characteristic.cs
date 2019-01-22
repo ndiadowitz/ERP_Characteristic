@@ -1,6 +1,7 @@
 using Characteristics.CharactersiticWSDL;
 using System.Collections.Generic;
 using System.Linq;
+using static Characteristics.Erp.Util.Datatypes;
 
 namespace Characteristics.Erp.@object
 {
@@ -23,13 +24,33 @@ namespace Characteristics.Erp.@object
             Bapicharactlist = bapicharactlist;
         }
 
-        public Characteristic(string name, string dataType, string length, string decimals, string description)
+        public Characteristic(string name, string value, Datatype datatype, string length, string decimals, string description, string status)
         {
             _name = name;
-            _dataType = dataType;
+
             _length = length;
             _decimals = decimals;
             Description = description;
+            Status = status;
+            Value = value;
+            switch (datatype)
+            {
+                case Datatype.CHAR:
+                    DataType = "CHAR";
+                    break;
+                case Datatype.NUM:
+                    DataType = "NUM";
+                    break;
+                case Datatype.DATE:
+                    DataType = "DATE";
+                    break;
+                case Datatype.CURR:
+                    DataType = "CURR";
+                    break;
+                case Datatype.TIME:
+                    DataType = "TIME";
+                    break;
+            }
         }
 
         /// <summary>
@@ -114,9 +135,26 @@ namespace Characteristics.Erp.@object
             }
         }
 
+        /// <summary>
+        /// Description of the Characteristic object.
+        /// </summary>
         public string Description
         {
-            set;get;
+            set;
+            get;
+        }
+
+        /// <summary>
+        /// Status of the Characteristic object.
+        /// </summary>
+        public string Status
+        {
+            get; set;
+        }
+
+        public string Value
+        {
+            get; set;
         }
 
         public static List<Characteristic> ConvertToList(CharacteristicGetListResponse data)

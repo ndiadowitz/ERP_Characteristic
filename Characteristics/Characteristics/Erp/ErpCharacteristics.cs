@@ -20,10 +20,8 @@ namespace Characteristics.erp
 
         public BapiServiceTransactionCommitResponse CommitChanges()
         {
-            var bstc = new BapiServiceTransactionCommit
-            {
-                WAIT = " "
-            };
+            BapiServiceTransactionCommit bstc = new BapiServiceTransactionCommit();
+            bstc.WAIT = " ";
             return _sapCharacteristic.BapiServiceTransactionCommit(bstc);
         }
 
@@ -137,7 +135,8 @@ namespace Characteristics.erp
                     CharactName = characteristic.Name,
                     DataType = characteristic.DataType,
                     Length = characteristic.Length,
-                    Decimals = characteristic.Decimals
+                    Decimals = characteristic.Decimals,
+                    Status = characteristic.Status.ToString()
 
                 },
                 CharactDescr = new Bapicharactdescr[]
@@ -148,15 +147,35 @@ namespace Characteristics.erp
                         LanguageIso = "DE"
                     }
                 }
-
             };
 
-            return _sapCharacteristic.CharacteristicCreate(toCreate);
+            if (characteristic.DataType.Equals("CHAR"))
+            {
+                toCreate.CharactValuesChar = new Bapicharactvalueschar[]
+                {
+                    new Bapicharactvalueschar()
+                    {
+                        ValueChar = characteristic.Value,
+                        DefaultValue = ""
+                    }
+                };
+            }
+            try
+            {
+                return _sapCharacteristic.CharacteristicCreate(toCreate);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
         }
 
         public CharacteristicDeleteResponse DeleteCharacteristic(Characteristic characteristic)
         {
-            var toDelete = new CharacteristicDelete();
+            var toDelete = new CharacteristicDelete()
+            {
+                CharactName = characteristic.Name
+            };
 
             return _sapCharacteristic.CharacteristicDelete(toDelete);
         }
