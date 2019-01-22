@@ -11,7 +11,7 @@ namespace Characteristics.Erp.@object
         /// Bapi object
         /// </summary>
         private Bapicharactlist Bapicharactlist { get; }
-        
+
         /// <summary>
         /// Default constructor
         /// </summary>
@@ -35,10 +35,77 @@ namespace Characteristics.Erp.@object
         {
             set { _name = value; }
             get {
-                if(_name == null)
+                if (_name == null)
                     return Bapicharactlist.Charactname;
                 return _name;
             }
+        }
+
+        /// <summary>
+        /// Data Type of Bapi object
+        /// Used by <see cref="DataType"/> 
+        /// </summary>
+        private string _dataType;
+
+        /// <summary>
+        /// Data Type of Bapi object
+        /// Set <see cref="DataType"/> will not effect Bapi object.
+        /// </summary>
+        public string DataType
+        {
+            set{ _dataType = value;}
+            get {
+                if (_dataType == null)
+                    return Bapicharactlist.Datatype;
+                return _dataType;
+            }
+        }
+
+        /// <summary>
+        /// Length of Bapi object if it is numeric
+        /// Used by <see cref="Length"/> 
+        /// </summary>
+        private string _length;
+
+        /// <summary>
+        /// Length of Bapi object if it is numeric
+        /// Set <see cref="Length"/> will not effect Bapi object.
+        /// </summary>
+        public string Length
+        {
+            set { _length = value; }
+            get {
+                if (_length == null)
+                    return Bapicharactlist.Charactlength;
+                return _length;
+                
+            }
+        }
+
+        /// <summary>
+        /// Length of Bapi object deicmals if it is a floating point number
+        /// Used by <see cref="Decimals"/> 
+        /// </summary>
+        private string _decimals;
+
+        /// <summary>
+        /// Length of Bapi object deicmals if it is a floating point number
+        /// Set <see cref="Decimals"/> will not effect Bapi object.
+        /// </summary>
+        public string Decimals
+        {
+            set { _decimals = value; }
+            get
+            {
+                if (_decimals == null)
+                    return Bapicharactlist.Charactdecimals;
+                return _decimals;
+            }
+        }
+
+        public string Description
+        {
+            set;get;
         }
     }
 }

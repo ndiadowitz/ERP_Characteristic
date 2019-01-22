@@ -134,5 +134,38 @@ namespace Characteristics.erp
             };
             return _sapCharacteristic.CharacteristicRemoveLongText(longtext);
         }
+
+        public CharacteristicCreateResponse CreateCharacteristic(Characteristic characteristic)
+        {
+            var toCreate = new CharacteristicCreate()
+            {
+                CharactDetail = new Bapicharactdetail()
+                {
+                    CharactName = characteristic.Name,
+                    DataType = characteristic.DataType,
+                    Length = characteristic.Length,
+                    Decimals = characteristic.Decimals
+
+                },
+                CharactDescr = new Bapicharactdescr[]
+                {
+                    new Bapicharactdescr()
+                    {
+                        Description = characteristic.Description,
+                        LanguageIso = "DE"
+                    }
+                }
+
+            };
+
+            return _sapCharacteristic.CharacteristicCreate(toCreate);
+        }
+
+        public CharacteristicDeleteResponse DeleteCharacteristic(Characteristic characteristic)
+        {
+            var toDelete = new CharacteristicDelete();
+
+            return _sapCharacteristic.CharacteristicDelete(toDelete);
+        }
     }
 }
