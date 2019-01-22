@@ -107,7 +107,7 @@ namespace Characteristics
             transactionStatus.Clear();
             try
             {
-                var data = erpCharacteristics.GetList(GetList.Sing.Inclusive, GetList.Options.GreaterEqual, "0");
+                var data = erpCharacteristics.GetList(GetList.Sign.Inclusive, GetList.Options.GreaterEqual, "0");
                 var characteristics = Characteristic.ConvertToList(data);
                 charBox.DataSource = characteristics;
             } catch (Exception ex)

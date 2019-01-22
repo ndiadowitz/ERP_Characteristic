@@ -38,12 +38,12 @@ namespace Characteristics.erp
         /// <summary>
         /// Simple search for Characteristic objects
         /// </summary>
-        /// <param name="sing"><see cref="Util.GetList.Sing"/></param>
+        /// <param name="sign"><see cref="Util.GetList.Sign"/></param>
         /// <param name="options"><see cref="Util.GetList.Options"/></param>
         /// <param name="low">Lower value</param>
         /// <param name="high">Upper value or '_' for empty</param>
         /// <returns>List of Characteristics or <code>null</code> on error</returns>
-        public CharacteristicGetListResponse GetList(GetList.Sing sing, GetList.Options options, string low, string high = "_")
+        public CharacteristicGetListResponse GetList(GetList.Sign sign, GetList.Options options, string low, string high = "_")
         {
             var getList = new CharacteristicGetList
             {
@@ -51,7 +51,7 @@ namespace Characteristics.erp
                 {
                     new Bapicharactrangetable
                     {
-                        Sign = Util.GetList.ToValue(sing),
+                        Sign = Util.GetList.ToValue(sign),
                         Option = Util.GetList.ToValue(options),
                         Low = low,
                         High = high

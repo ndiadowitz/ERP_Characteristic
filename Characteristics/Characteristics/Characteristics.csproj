@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Erp\object\Characteristic.cs" />
+    <Compile Include="Erp\object\Class.cs" />
     <Compile Include="Erp\Util\Datatypes.cs" />
     <Compile Include="Erp\Util\GetList.cs" />
   </ItemGroup>

@@ -28,7 +28,7 @@ namespace Characteristics.erp
             return _sapClass.BapiServiceTransactionRollback(new BapiServiceTransactionRollback());
         }
 
-        public ClassGetListResponse GetList(string classTypeNumber, GetList.Sing sing, GetList.Options options, string low, string high = "_")
+        public ClassGetListResponse GetList(string classTypeNumber, GetList.Sign sign, GetList.Options options, string low, string high = "_")
         {
             var getList = new ClassGetList()
             {
@@ -36,7 +36,7 @@ namespace Characteristics.erp
                 {
                     new Bapiclasssel()
                     {
-                        Sign = Util.GetList.ToValue(sing),
+                        Sign = Util.GetList.ToValue(sign),
                         Option = Util.GetList.ToValue(options),
                         ClassLow = low,
                         ClassHigh = high

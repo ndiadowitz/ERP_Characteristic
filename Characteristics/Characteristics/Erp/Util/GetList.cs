@@ -7,7 +7,7 @@ namespace Characteristics.erp.Util
         /// <summary>
         /// Search <code>Inclusive</code> or <code>Exclusive</code> <see cref="Options"/>
         /// </summary>
-        public enum Sing
+        public enum Sign
         {
             Inclusive,
             Exclusive
@@ -31,18 +31,18 @@ namespace Characteristics.erp.Util
         }
 
         /// <summary>
-        /// Get value of <see cref="Sing"/>.
+        /// Get value of <see cref="Sign"/>.
         /// </summary>
-        /// <param name="o"><see cref="Sing"/></param>
+        /// <param name="o"><see cref="Sign"/></param>
         /// <returns>Returns equivalent string</returns>
-        /// <exception cref="ArgumentOutOfRangeException"><see cref="Sing"/> not known</exception>
-        public static string ToValue(Sing o)
+        /// <exception cref="ArgumentOutOfRangeException"><see cref="Sign"/> not known</exception>
+        public static string ToValue(Sign o)
         {
             switch (o)
             {
-                case Sing.Inclusive:
+                case Sign.Inclusive:
                     return "I";
-                case Sing.Exclusive:
+                case Sign.Exclusive:
                     return "E";
                 default:
                     throw new ArgumentOutOfRangeException(nameof(o), o, null);
